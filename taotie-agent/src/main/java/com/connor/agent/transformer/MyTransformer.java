@@ -4,8 +4,6 @@ import java.io.*;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.security.ProtectionDomain;
 
 /**
@@ -25,8 +23,14 @@ public class MyTransformer implements ClassFileTransformer {
         //System.out.println(className);
         try {
             String classReName = className.replace("/", ".");
-            if (classReName.equals("com.connor.common.tool.LogUtils")) {
+
+            String basePath = "G:/java/repo/com/connor/taotie-common/1.0.1/";
+            if (classReName.startsWith("com.connor.common.tool.LogUtils")) {
+                //com/connor/common/tool/LogUtils
+                System.out.println(className);
+                //com.connor.common.tool.LogUtils
                 System.out.println(classReName);
+
 
                 // 使用这种方式不行
                 /*URL[] urls = new URL[1];
@@ -34,10 +38,8 @@ public class MyTransformer implements ClassFileTransformer {
                 URLClassLoader urlClassLoader = new URLClassLoader(urls);
                 Class clazz = loader.loadClass(classReName);
                 return write(clazz);*/
-
-                String logUtilsClzPath = "G:\\java\\repo\\com\\connor\\taotie-common\\1.0.1\\LogUtils.class";
+                String logUtilsClzPath = basePath + className + ".class";
                 return readStream(new FileInputStream(logUtilsClzPath), true);
-
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -48,13 +50,14 @@ public class MyTransformer implements ClassFileTransformer {
         return new byte[0];
     }
 
-    public byte[] write(Serializable object) throws IOException {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ObjectOutputStream stream = new ObjectOutputStream(byteArrayOutputStream);
-        stream.writeObject(object);
-        return byteArrayOutputStream.toByteArray();
-    }
-
+    /**
+     * 读取流
+     *
+     * @param inputStream
+     * @param close
+     * @return
+     * @throws IOException e
+     */
     private static byte[] readStream(InputStream inputStream, boolean close) throws IOException {
         if(inputStream == null) {
             throw new IOException("Class not found");
@@ -67,15 +70,20 @@ public class MyTransformer implements ClassFileTransformer {
                 while((bytesRead = inputStream.read(data, 0, data.length)) != -1) {
                     outputStream.write(data, 0, bytesRead);
                 }
-
                 outputStream.flush();
-                byte[] var5 = outputStream.toByteArray();
-                return var5;
+                return outputStream.toByteArray();
             } finally {
                 if(close) {
                     inputStream.close();
                 }
             }
         }
+    }
+
+    private byte[] write(Serializable object) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ObjectOutputStream stream = new ObjectOutputStream(byteArrayOutputStream);
+        stream.writeObject(object);
+        return byteArrayOutputStream.toByteArray();
     }
 }
