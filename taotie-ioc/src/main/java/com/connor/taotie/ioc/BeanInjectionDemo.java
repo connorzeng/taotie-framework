@@ -38,6 +38,7 @@ public class BeanInjectionDemo {
         System.out.println("beanFactroy:" + persionRepository.getBeanFactory());
     }
 
+
     private static void testTwo() {
         System.out.println("testTwo-------------------------");
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/injection-context.xml");
