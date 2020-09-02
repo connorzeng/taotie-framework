@@ -9,6 +9,7 @@
         <property name="name" value="刚子老师"/>
     </bean>
 
+    <!-- objectFactory -->
     <bean id = "objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="persion"/>
     </bean>

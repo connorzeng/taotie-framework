@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="dependency-lookup-context.xml"/>
+
+    <!-- autowire -->
+    <!-- 必须有setter方法,否则没法注入 -->
+    <bean id="repository" class="com.connor.taotie.ioc.pojo.PersionRepository" autowire="byType">
+    </bean>
+
+    <!-- 注入list的两种方式 -->
+    <!-- 方式一: 使用util标签 -->
+    <!--<bean id="repository" class="com.connor.taotie.ioc.pojo.PersionRepository" >
+        <util:list id="persions">
+            <ref bean="persion"/>
+            <ref bean="superPersion"/>
+        </util:list>
+    </bean>-->
+    <!-- 方式二: 就这样的 -->
+    <!--<bean id="repository" class="com.connor.taotie.ioc.pojo.PersionRepository" >
+        <property name="persions">
+            <list>
+                <ref bean="persion"/>
+                <ref bean="superPersion"/>
+            </list>
+        </property>
+    </bean>-->
+
+</beans>

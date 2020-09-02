@@ -58,11 +58,13 @@ public class BeanLookUpDemo {
         System.out.println("lookupAnnotation--------------------");
         if (beanFactory instanceof ListableBeanFactory) {
             ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
+            // 这个注解是打到Persion类上面的
             Map<String, Persion> beansWithAnnotation = (Map) listableBeanFactory.getBeansWithAnnotation(Super.class);
             beansWithAnnotation.forEach((name, bean) -> {
                 System.out.println(bean + ";" + bean.hashCode());
             });
         }
     }
+
 
 }
