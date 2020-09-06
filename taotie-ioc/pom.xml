@@ -11,8 +11,17 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>taotie-ioc</artifactId>
-    <packaging>maven-plugin</packaging>
+    <!-- 该死的打包方式,这里会把他打成一个maven plugin -->
+    <!--<packaging>maven-plugin</packaging>-->
     <name>taotie-ioc</name>
+
+    <dependencies>
+        <dependency>
+            <artifactId>taotie-common</artifactId>
+            <groupId>com.connor</groupId>
+            <version>1.0.2</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

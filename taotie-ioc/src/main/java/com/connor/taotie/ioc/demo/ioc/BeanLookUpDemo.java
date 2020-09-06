@@ -1,6 +1,7 @@
-package com.connor.taotie.ioc;
+package com.connor.taotie.ioc.demo.ioc;
 
 
+import com.connor.common.tool.SpringTools;
 import com.connor.taotie.ioc.annotation.Super;
 import com.connor.taotie.ioc.pojo.Persion;
 import org.springframework.beans.factory.BeanFactory;
@@ -36,6 +37,7 @@ public class BeanLookUpDemo {
 
     private static void lookupLazyTime(BeanFactory beanFactory) {
         //TODO 不太明白为什么是延迟查找
+        // 延迟查找和延迟加载是两个东西
         System.out.println("lookupLazyTime--------------------");
         ObjectFactory<Persion> objectFactory = (ObjectFactory<Persion>) beanFactory.getBean("objectFactory");
         Persion bean = objectFactory.getObject();
@@ -43,14 +45,9 @@ public class BeanLookUpDemo {
     }
 
     private static void lookupCollection(BeanFactory beanFactory) {
-        System.out.println("lookUpCollection--------------------");
-        if (beanFactory instanceof ListableBeanFactory) {
-            ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
-            Map<String, Persion> beansOfType = listableBeanFactory.getBeansOfType(Persion.class);
-            beansOfType.forEach((name, bean) -> {
-                System.out.println(bean + ";" + bean.hashCode());
-            });
-        }
+        System.out.println("lookUpCollection-begin--------------------");
+        SpringTools.lookupCollectionAll(beanFactory);
+        System.out.println("lookUpCollection-end--------------------");
     }
 
     private static void lookupAnnotation(BeanFactory beanFactory) {

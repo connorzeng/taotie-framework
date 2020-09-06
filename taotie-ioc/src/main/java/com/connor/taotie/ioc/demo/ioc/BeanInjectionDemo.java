@@ -1,4 +1,4 @@
-package com.connor.taotie.ioc;
+package com.connor.taotie.ioc.demo.ioc;
 
 import com.connor.taotie.ioc.pojo.PersionRepository;
 import org.springframework.beans.factory.BeanFactory;

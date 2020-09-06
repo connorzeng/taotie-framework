@@ -1,4 +1,4 @@
-package com.connor.taotie.ioc.javaBeans;
+package com.connor.taotie.ioc.demo.javaBeans;
 
 
 import com.connor.taotie.ioc.pojo.Persion;

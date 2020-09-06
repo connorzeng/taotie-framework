@@ -7,6 +7,7 @@ public class LogUtils {
         LogUtils logUtils = new LogUtils();
         logUtils.getInner();
         System.out.println("hello-1.0.2");
+
     }
 
 
