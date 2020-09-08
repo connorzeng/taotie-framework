@@ -34,8 +34,10 @@ public class BeanDefinitionRegisterDemo {
         registerPersionWithAPI(applicationContext, null);
 
 
+        //可以获取beanFactory注册一个单例bean
         //ConfigurableListableBeanFactory beanFactory = applicationContext.getBeanFactory();
-
+        //ConfigurableListableBeanFactory beanFactory = applicationContext.getBeanFactory();
+        //beanFactory.registerSingleton();
         applicationContext.refresh();
 
 

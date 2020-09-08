@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 静态工厂 -->
+    <bean id = "persion-static-method" class="com.connor.taotie.ioc.pojo.Persion" factory-method="createPersion" />
+
+    <!-- 实例工厂 -->
+    <bean id = "persion-instance-factory"  factory-bean="persionFactory" factory-method="createPersion"/>
+    <bean id="persionFactory" class="com.connor.taotie.ioc.pojo.DefaultPersionFactory" />
+
+    <!-- beanFactory -->
+
+
+</beans>
