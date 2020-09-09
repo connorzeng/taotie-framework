@@ -14,6 +14,7 @@
         <module>taotie-common</module>
         <module>taotie-agent</module>
         <module>taotie-ioc</module>
+        <module>taotie-dependency</module>
     </modules>
 
     <properties>

@@ -1,17 +1,12 @@
 package com.connor.taotie.ioc.demo.bean;
 
 import com.connor.common.tool.SpringTools;
+import com.connor.taotie.ioc.pojo.DefaultPersionFactory;
 import com.connor.taotie.ioc.pojo.Persion;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
-import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 /**
  * bean的注册
@@ -30,8 +25,8 @@ public class BeanDefinitionRegisterDemo {
         applicationContext.register(BeanDefinitionRegisterDemo.class);
 
         //使用API注册beanDefinition
-        registerPersionWithAPI(applicationContext, "persion-connorSystem");
-        registerPersionWithAPI(applicationContext, null);
+        SpringTools.registerPersionWithAPI(applicationContext, "persion-connorSystem", Persion.class);
+        SpringTools.registerPersionWithAPI(applicationContext, null, Persion.class);
 
 
         //可以获取beanFactory注册一个单例bean
@@ -46,23 +41,6 @@ public class BeanDefinitionRegisterDemo {
         SpringTools.logBeanDefinition(applicationContext);
     }
 
-    private static void registerPersionWithAPI(AnnotationConfigApplicationContext applicationContext, String name) {
-
-        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(Persion.class)
-                .addPropertyValue("name","曾罡-api")
-                .addPropertyValue("age",1)
-                .setScope(BeanDefinition.SCOPE_SINGLETON);
-
-        if (!StringUtils.isEmpty(name)){
-            applicationContext.registerBeanDefinition(name, beanDefinitionBuilder.getBeanDefinition());
-        } else {
-            // generateBeanName只是生成beanName,不会注册beanDefinition
-            // BeanDefinitionReaderUtils.generateBeanName(beanDefinitionBuilder.getBeanDefinition(),applicationContext);
-            // com.connor.taotie.ioc.pojo.Persion#0
-            BeanDefinitionReaderUtils.registerWithGeneratedName(beanDefinitionBuilder.getBeanDefinition(),applicationContext);
-        }
-    }
-
 
     // 2. 通过 @Component 方式
     @Component // 定义当前类作为 Spring Bean（组件）
@@ -74,6 +52,11 @@ public class BeanDefinitionRegisterDemo {
             persion.setAge(1);
             persion.setName("曾罡-BeanDefinitionRegisterDemo");
             return persion;
+        }
+
+        @Bean
+        public DefaultPersionFactory defaultPersionFactory() {
+            return new DefaultPersionFactory();
         }
     }
 

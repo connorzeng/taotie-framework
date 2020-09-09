@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!-- serviceLoader初始化 -->
+    <bean id="persionFactoryServiceLoader" class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
+        <!-- serviceType:一类接口 -->
+        <!-- META-INF/services/  文件名为接口  文件内容为实现类 -->
+        <!-- src/main/resources/META-INF/services/com.connor.taotie.ioc.pojo.PersionFactory -->
+        <property name="serviceType" value="com.connor.taotie.ioc.pojo.PersionFactory" />
+    </bean>
+
+</beans>
