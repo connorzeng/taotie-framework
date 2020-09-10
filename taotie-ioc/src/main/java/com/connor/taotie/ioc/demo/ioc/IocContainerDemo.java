@@ -27,6 +27,7 @@ public class IocContainerDemo {
 
     private static void testXmlContainer() {
 
+
         // 创建 BeanFactory 容器
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);

@@ -6,10 +6,21 @@
         <artifactId>taotie-framework</artifactId>
         <groupId>com.connor</groupId>
         <version>1.0</version>
+        <!-- 这个是设置相对路径,为了方便找到parent pom.xml -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>taotie-dependency</artifactId>
+    <name>taotie-dependency</name>
 
+
+    <dependencies>
+        <dependency>
+            <artifactId>taotie-ioc</artifactId>
+            <groupId>com.connor</groupId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
