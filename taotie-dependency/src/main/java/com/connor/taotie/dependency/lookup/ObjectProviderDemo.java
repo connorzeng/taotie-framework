@@ -2,6 +2,7 @@ package com.connor.taotie.dependency.lookup;
 
 import com.connor.taotie.ioc.pojo.Persion;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -19,6 +20,8 @@ public class ObjectProviderDemo {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(ObjectProviderDemo.class);
         applicationContext.refresh();
+        ConfigurableListableBeanFactory beanFactory = applicationContext.getBeanFactory();
+
 
 
         // 获取流输出(对象)
