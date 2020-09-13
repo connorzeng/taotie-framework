@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <import resource="dependency-lookup-context.xml" />
+
+    <!-- setter方法注入 手动 manual operation -->
+    <bean  id="persionHolderManu" class="com.connor.taotie.dependency.pojo.PersionHolder">
+        <property name="persion" ref="superPersion"/>
+    </bean>
+
+
+    <!-- setter方法注入 自动 auto byType-->
+    <bean  id="persionHolderAutoByType" class="com.connor.taotie.dependency.pojo.PersionHolder" autowire="byType">
+        <!-- 自动注入byType -->
+        <!-- 必须给多个同类型的bean 配置 primary 标签才不会报错 -->
+        <!-- Could not autowire. There is more than one bean of 'Persion' type. Beans: persion,superPersion. Properties: 'persion' -->
+        <!-- error:  No qualifying bean of type 'com.connor.taotie.ioc.pojo.Persion' -->
+        <!--<property name="persion" ref="superPersion"/>-->
+    </bean>
+
+    <!-- setter方法注入 自动 auto byName-->
+    <bean  id="persionHolderAutoByName" class="com.connor.taotie.dependency.pojo.PersionHolder" autowire="byName">
+        <!-- byName -->
+        <!--<property name="persion" ref="superPersion"/>-->
+    </bean>
+
+
+    <!-- 定义重复的bean,会被后加载刷新掉原来的bean -->
+    <!--<bean id = "persion" class="com.connor.taotie.ioc.pojo.Persion">
+        <property name="age" value="12"/>
+        <property name="name" value="刚子老师-new-superPersion"/>
+    </bean>-->
+
+</beans>

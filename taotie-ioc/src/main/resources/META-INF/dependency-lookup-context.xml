@@ -3,18 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+<!--
     <bean id = "persion" class="com.connor.taotie.ioc.pojo.Persion">
         <property name="age" value="12"/>
         <property name="name" value="刚子老师"/>
-    </bean>
+    </bean>-->
 
     <!-- objectFactory -->
-    <bean id = "objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+<!--    <bean id = "objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="persion"/>
-    </bean>
+    </bean>-->
 
-    <bean id="superPersion" class="com.connor.taotie.ioc.pojo.SuperPersion" parent="persion">
+    <bean id="superPersion" class="com.connor.taotie.ioc.pojo.SuperPersion"  >
         <property name="address" value="深圳"/>
     </bean>
 
