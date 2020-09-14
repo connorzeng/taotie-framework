@@ -15,6 +15,7 @@
         <module>taotie-agent</module>
         <module>taotie-ioc</module>
         <module>taotie-dependency</module>
+        <module>taotie-jdk</module>
     </modules>
 
     <properties>
