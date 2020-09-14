@@ -26,7 +26,6 @@ public class ValueInjectDemo {
 
         System.out.println(configApplicationContext.getBean("pojo"));
 
-
         configApplicationContext.close();
     }
 
