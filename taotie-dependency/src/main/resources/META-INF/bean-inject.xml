@@ -30,6 +30,8 @@
     </bean>
 
 
+
+
     <!-- 定义重复的bean,会被后加载刷新掉原来的bean -->
     <!--<bean id = "persion" class="com.connor.taotie.ioc.pojo.Persion">
         <property name="age" value="12"/>

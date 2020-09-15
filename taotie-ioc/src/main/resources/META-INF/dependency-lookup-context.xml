@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="persion" class="com.connor.taotie.ioc.pojo.Persion" primary="true">
+    <bean id="persion" class="com.connor.taotie.ioc.pojo.Persion" >
         <property name="age" value="12"/>
         <property name="name" value="刚子老师"/>
     </bean>
@@ -13,7 +13,7 @@
         <property name="targetBeanName" value="persion"/>
     </bean>
 
-    <bean id="superPersion" class="com.connor.taotie.ioc.pojo.SuperPersion" parent="persion">
+    <bean id="superPersion" class="com.connor.taotie.ioc.pojo.SuperPersion" parent="persion" primary="true">
         <property name="address" value="深圳"/>
     </bean>
 

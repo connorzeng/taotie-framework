@@ -10,6 +10,16 @@ public class PersionHolder {
 
     private Persion persion;
 
+    /**
+     * 构造器自动注入不能使用byName  只有byType
+     * @param superPersion
+     */
+    public PersionHolder(Persion superPersion) {
+        this.persion = superPersion;
+    }
+    public PersionHolder() {
+    }
+
 
     public Persion getPersion() {
         return persion;

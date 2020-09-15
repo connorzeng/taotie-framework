@@ -2,6 +2,7 @@ package com.connor.taotie.dependency.inject;
 
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,8 +30,28 @@ public class ValueInjectDemo {
         configApplicationContext.close();
     }
 
+    /**
+     * 可以在两个地方添加私货
+     */
+    public class PropertyUtil extends PropertySourcesPlaceholderConfigurer implements InitializingBean {
 
-    public class PropertyUtil extends PropertySourcesPlaceholderConfigurer {
+
+        /**
+         * 这里需要在启动时执行初始化方法
+         * TODO 真正在容器里面使用的时候是不需要进行初始化方法的
+         * @param
+         */
+        /*@Override
+        public void setProperties(Properties properties) {
+
+            //添加私货
+            properties.put("connorzeng","刚子老师的私货");
+            super.setProperties(properties);
+        }*/
+        @Override
+        public void afterPropertiesSet() throws Exception {
+            super.setProperties(new Properties());
+        }
 
         /**
          * Return a merged Properties instance containing both the
@@ -38,10 +59,8 @@ public class ValueInjectDemo {
          */
         protected Properties mergeProperties() throws IOException {
             Properties properties = super.mergeProperties();
-
             //添加私货
             properties.put("connorzeng","刚子老师的私货");
-
             return properties;
         }
     }
