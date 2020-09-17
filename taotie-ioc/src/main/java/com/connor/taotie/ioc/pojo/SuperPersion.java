@@ -9,6 +9,7 @@ public class SuperPersion extends Persion{
 
     private String address;
 
+    private String ability;
 
     public String getAddress() {
         return address;
@@ -18,10 +19,20 @@ public class SuperPersion extends Persion{
         this.address = address;
     }
 
+
+    public String getAbility() {
+        return ability;
+    }
+
+    public void setAbility(String ability) {
+        this.ability = ability;
+    }
+
     @Override
     public String toString() {
         return "SuperPersion{" +
                 "address='" + address + '\'' +
+                ", ability='" + ability + '\'' +
                 "} " + super.toString();
     }
 }

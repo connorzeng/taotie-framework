@@ -15,6 +15,7 @@
 
     <bean id="superPersion" class="com.connor.taotie.ioc.pojo.SuperPersion" parent="persion" primary="true">
         <property name="address" value="深圳"/>
+        <property name="ability" value="飞向宇宙"/>
     </bean>
 
 
