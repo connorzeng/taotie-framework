@@ -6,6 +6,8 @@
     <bean id="persion" class="com.connor.taotie.ioc.pojo.Persion" >
         <property name="age" value="12"/>
         <property name="name" value="刚子老师"/>
+        <!-- Enum直接注入String -->
+        <property name="city" value="Guangzhou"/>
     </bean>
 
     <!--objectFactory-->

@@ -1,6 +1,6 @@
 package com.connor.taotie.ioc.pojo;
 
-import org.springframework.context.annotation.Bean;
+import com.connor.common.constants.City;
 
 /**
  * javabean三大元数据要素: properties, events, and methods
@@ -23,6 +23,8 @@ public class Persion {
 
     private Integer age;
 
+    private City city;
+
     public String getName() {
         return name;
     }
@@ -43,14 +45,22 @@ public class Persion {
         this.age = age;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     @Override
     public String toString() {
         return "Persion{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", city=" + city +
                 '}';
     }
-
 
     /**
      * 必须是static public
