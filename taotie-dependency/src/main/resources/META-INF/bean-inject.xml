@@ -9,6 +9,9 @@
     <import resource="dependency-lookup-context.xml"/>
 
     <!-- setter方法注入 手动 manual operation -->
+    <!-- 这里不会触发DefaultListableBeanFactory.resolveDependency  -->
+    <!-- 这里不会触发DefaultListableBeanFactory.resolveDependency  -->
+    <!-- 这里不会触发DefaultListableBeanFactory.resolveDependency  -->
     <bean id="persionHolderManu" class="com.connor.taotie.dependency.pojo.PersionHolder">
         <property name="persion" ref="superPersion"/>
         <property name="persionArray">
@@ -23,7 +26,8 @@
     </bean>
 
 
-    <!-- setter方法注入 自动 auto byType-->
+    <!--setter方法注入 自动 auto byType-->
+    <!-- autowire byType才会触发resolveDependency -->
     <bean id="persionHolderAutoByType" class="com.connor.taotie.dependency.pojo.PersionHolder" autowire="byType">
         <!-- 自动注入byType -->
         <!-- 必须给多个同类型的bean 配置 primary 标签才不会报错 -->
