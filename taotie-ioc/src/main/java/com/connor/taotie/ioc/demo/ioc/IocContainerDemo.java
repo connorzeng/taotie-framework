@@ -20,7 +20,7 @@ public class IocContainerDemo {
 
         // 演示1
         testAnnotationContainer();
-
+        System.out.println("IocContainerDemo-------------------------------------------");
         // 演示2
         testXmlContainer();
     }

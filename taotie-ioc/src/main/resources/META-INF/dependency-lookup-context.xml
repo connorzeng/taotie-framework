@@ -3,6 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id ="persionAddress" class="com.connor.taotie.ioc.pojo.PersionAddress">
+        <property name="nation" value="汉族" />
+        <property name="state" value="中国" />
+    </bean>
+
     <bean id="persion" class="com.connor.taotie.ioc.pojo.Persion" >
         <property name="age" value="12"/>
         <property name="name" value="刚子老师"/>

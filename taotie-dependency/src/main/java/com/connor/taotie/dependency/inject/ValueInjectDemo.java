@@ -38,7 +38,7 @@ public class ValueInjectDemo {
 
         /**
          * 这里需要在启动时执行初始化方法
-         * TODO 真正在容器里面使用的时候是不需要进行初始化方法的
+         * 真正在容器里面使用的时候是不需要进行初始化方法的
          * @param
          */
         /*@Override

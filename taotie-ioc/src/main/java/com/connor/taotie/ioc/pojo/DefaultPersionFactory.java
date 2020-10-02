@@ -7,6 +7,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+/**
+ * 初始化顺序:
+ * @PostConstruct
+ * DefaultPersionFactory-PostConstruct-init
+ * InitializingBean
+ * DefaultPersionFactory-afterPropertiesSet-init
+ * xml配置init
+ * DefaultPersionFactory-init
+ *
+ */
 public class DefaultPersionFactory implements PersionFactory, InitializingBean, DisposableBean {
 
     //<context:annotation-config />

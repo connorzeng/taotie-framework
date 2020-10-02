@@ -15,11 +15,8 @@ import org.springframework.context.annotation.Lazy;
 import java.util.Optional;
 
 /**
- *  依赖注入的过程
- * - 入口-DefaultListableBeanFactory.resolveDependency
- * - 元信息: DependencyDescriptor
- * - 自动绑定候选对象处理器-AutowireCandidateResolver
- * TODO 这里是要学习XML注入的过程,还没进行测试
+ *  xml依赖注入的过程
+ *  TODO xml注入过程
  *
  */
 public class StudyLifeCycleXmlInjectDemo {
