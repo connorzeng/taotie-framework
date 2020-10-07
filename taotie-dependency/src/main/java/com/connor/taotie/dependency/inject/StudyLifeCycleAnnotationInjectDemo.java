@@ -44,6 +44,8 @@ public class StudyLifeCycleAnnotationInjectDemo {
 
 
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+        applicationContext.setId("connor_app_01");
+        applicationContext.setDisplayName("connor_app");
         applicationContext.register(StudyLifeCycleAnnotationInjectDemo.class);
         applicationContext.refresh();
 
@@ -51,7 +53,16 @@ public class StudyLifeCycleAnnotationInjectDemo {
 
         System.out.println(bean.persion);
         System.out.println(bean.persionOptional);
+        System.out.println("--------------------------");
 
+        System.out.println(applicationContext.getId());
+        System.out.println(applicationContext.getApplicationName());
+        System.out.println(applicationContext.getDisplayName());
+        System.out.println(applicationContext.getParent());
+        System.out.println(applicationContext.getAutowireCapableBeanFactory());
+
+        System.out.println(applicationContext.getAutowireCapableBeanFactory() == applicationContext.getBeanFactory());
+        System.out.println(applicationContext.getAutowireCapableBeanFactory() == applicationContext.getDefaultListableBeanFactory());
 
         applicationContext.close();
     }
