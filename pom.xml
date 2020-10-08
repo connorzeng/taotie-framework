@@ -65,11 +65,21 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- 使用 Servlet 3.1 API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <!-- 依赖管理 -->
     <dependencyManagement>
         <dependencies>
+
 
             <!-- Javassist (JAVA programming ASSISTant) 是在 Java 中编辑字节码的类库; -->
             <!-- taotie-agent 模块 -->
