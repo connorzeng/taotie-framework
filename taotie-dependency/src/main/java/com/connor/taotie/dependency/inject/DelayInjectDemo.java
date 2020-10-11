@@ -39,7 +39,7 @@ public class DelayInjectDemo {
 
         DelayInjectDemo bean = applicationContext.getBean(DelayInjectDemo.class);
         //System.out.println(bean.persion == bean.persionObjectProvider.getIfAvailable(()-> Persion.createPersion()));
-        System.out.println(bean.persion == bean.persionObjectProvider.getIfAvailable(Persion::createPersion));
+        //System.out.println(bean.persion == bean.persionObjectProvider.getIfAvailable(Persion::createPersion));
 
         System.out.println("persionObjectFacotry------------------");
         bean.persionObjectFacotry.getObject().forEach(System.out::println);

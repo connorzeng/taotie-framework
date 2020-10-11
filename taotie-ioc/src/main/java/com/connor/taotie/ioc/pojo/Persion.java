@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Persion {
 
+
     /**
      * 这个是用来测试Autowired的顺序在setter之前
      */
@@ -17,6 +18,8 @@ public class Persion {
     private String name;
     private Integer age;
     private City city;
+
+    private long id;
 
     public Persion(String name, Integer age) {
         this.name = name;
@@ -81,14 +84,26 @@ public class Persion {
         this.city = city;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Persion{" +
-                "name='" + name + '\'' +
+                "persionAddress=" + persionAddress +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", city=" + city +
+                ", id=" + id +
                 '}';
     }
 
-
+    public void destory() {
+        System.out.println(this.name + this.id + ":销毁中");
+    }
 }
