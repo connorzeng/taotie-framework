@@ -18,6 +18,8 @@ public class BeanDefinitionMegerDemo {
 
         //1. beanFactory
         //2. xmlBeanDefinitionReader
+        System.getProperties().setProperty("spring.profiles.active","dev");
+//        System.getProperties().setProperty("spring.profiles.default","dev");
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
         System.out.println("getBeanDefinitionCount-before:" + beanFactory.getBeanDefinitionCount());
