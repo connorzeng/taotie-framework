@@ -31,8 +31,9 @@ public class BeanDefinitionMegerDemo {
         System.out.println(superPersionBD);
 
 
-        //3. 在查找bean的时候才会触发 getBean-->doGetBean --> mergeBeanDefinition(第一次完成合并后会放入缓存)(经过合并后变成RootBeanDefinition)
         Persion persion = (Persion) beanFactory.getBean("persion");
+        //3. 在查找bean的时候才会触发 getBean-->doGetBean --> mergeBeanDefinition(第一次完成合并后会放入缓存)(经过合并后变成RootBeanDefinition)
+        Persion superPersion = (Persion) beanFactory.getBean("superPersion");
 
 
     }

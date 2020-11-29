@@ -1,16 +1,14 @@
 package com.connor.taotie.dependency.source;
 
+import com.connor.taotie.ioc.pojo.Persion;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.io.Resource;
 
 /**
  * 外部依赖的注入
  */
-@Configuration
+//@Configuration
 @PropertySource(value = "classpath:/default.properties",encoding = "UTF-8")
 public class ExternalConfigurationDenpendencySourceDemo {
 
@@ -47,6 +45,11 @@ public class ExternalConfigurationDenpendencySourceDemo {
         System.out.println(bean.resource);
 
         applicationContext.close();
+    }
+
+    @Bean
+    public Persion persion(){
+        return new Persion();
     }
 
 }
