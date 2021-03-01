@@ -16,6 +16,7 @@
         <module>taotie-ioc</module>
         <module>taotie-dependency</module>
         <module>taotie-jdk</module>
+        <!--<module>taotie-other</module>-->
     </modules>
 
     <properties>
