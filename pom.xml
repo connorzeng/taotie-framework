@@ -16,7 +16,7 @@
         <module>taotie-ioc</module>
         <module>taotie-dependency</module>
         <module>taotie-jdk</module>
-        <!--<module>taotie-other</module>-->
+        <module>taotie-other</module>
     </modules>
 
     <properties>
@@ -74,6 +74,18 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.7.9</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
