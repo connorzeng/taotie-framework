@@ -2,7 +2,12 @@ package com.connor.taotie.dependency.source;
 
 import com.connor.taotie.ioc.pojo.Persion;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.*;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.io.Resource;
 
 /**
@@ -51,5 +56,27 @@ public class ExternalConfigurationDenpendencySourceDemo {
     public Persion persion(){
         return new Persion();
     }
+
+
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public Test test(){
+        return new Test();
+    }
+
+
+    class Test implements ApplicationListener<ContextRefreshedEvent>{
+
+        public Test(){
+            System.out.println("");
+        }
+
+        @Override
+        public void onApplicationEvent(ContextRefreshedEvent event) {
+            ApplicationContext source = (ApplicationContext) event.getSource();
+            System.out.println(source.getApplicationName() + " refreshed");
+        }
+    }
+
 
 }

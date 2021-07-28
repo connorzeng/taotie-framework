@@ -8,6 +8,7 @@
 
     <import resource="dependency-lookup-context.xml"/>
 
+
     <!-- setter方法注入 手动 manual operation -->
     <!-- 这里不会触发DefaultListableBeanFactory.resolveDependency  -->
     <!-- 这里不会触发DefaultListableBeanFactory.resolveDependency  -->
