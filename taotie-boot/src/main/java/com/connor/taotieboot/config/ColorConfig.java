@@ -21,10 +21,10 @@ public class ColorConfig {
      * 会有两个Red bean
      * @return
      */
-//    @Bean
-//    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-//    public Red red(){
-//        return  new Red();
-//    }
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public Red red(){
+        return  new Red();
+    }
 
 }
