@@ -1,0 +1,28 @@
+## 冒号后面要加一个空格。
+## 冒号后面要加一个空格。
+## 冒号后面要加一个空格。
+
+ymalName: test
+
+## 选手通用属性
+commonProperties: &commonProperties
+  country: 中国
+  age: 18
+
+
+## 选手列表
+persionList:
+  - person:
+      name: 曾哥
+      sex: male
+      <<: *commonProperties
+
+  - person:
+      name: 宝姐
+      sex: female
+      <<: *commonProperties
+
+
+
+
+
