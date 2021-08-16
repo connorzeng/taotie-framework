@@ -22,7 +22,7 @@ public class HelloWorldController implements ApplicationContextAware {
     @Autowired
     private ApplicationContext context;
 
-    // 注入yml弟弟
+    // 注入yml
     @Value("${ymalName}")
     private String coutry;
 
