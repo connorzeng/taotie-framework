@@ -9,8 +9,8 @@ public class Sort {
 
     public static void main(String[] args) {
 
-        int[] tables = {8, 5, 9, 1, 0, 3};
-
+        //int[] tables = {8, 5, 9, 1, 0, 3};
+        int[] tables = {8, 5, 9, 1, 0, 3,101,2,10,7};
 
         int[] sortedTables = bubbleSort(tables);
         System.out.println(JSON.toJSONString(sortedTables));
@@ -27,15 +27,61 @@ public class Sort {
 
     /**
      * 归并排序
+     *
      * @param tables
      * @return
      */
     private static int[] mergeSort(int[] tables) {
 
+        //8, 5, 9, 1, 0, 3
+        //->
+        //8, 5, 9,      1, 0, 3
+        //8,    5, 9,      1,    0, 3
+        //5,8,9   0,1,3
+        //0,1,3,5,8,9
+        if (tables.length < 2) {
+            return tables;
+        }
 
+        int[] left = Arrays.copyOfRange(tables, 0, tables.length / 2);
+        int[] right = Arrays.copyOfRange(tables, tables.length / 2, tables.length);
 
+        int[] result = mergeTables(mergeSort(left), mergeSort(right));
+        return result;
     }
 
+    private static int[] mergeTables(int[] left, int[] right) {
+
+
+        int[] result = new int[left.length + right.length];
+
+        //5  9
+        int index = 0;
+        while (left.length > 0 && right.length > 0) {
+            if (left[0] < right[0]) {
+                result[index] = left[0];
+                left = Arrays.copyOfRange(left, 1, left.length);
+            } else {
+                result[index] = right[0];
+                right = Arrays.copyOfRange(right, 1, right.length);
+            }
+            index++;//这个很重要
+        }
+
+        while (left.length > 0) {
+            result[index] = left[0];
+            left = Arrays.copyOfRange(left, 1, left.length);
+            index++;//这个很重要
+        }
+
+        while (right.length > 0) {
+            result[index] = right[0];
+            right = Arrays.copyOfRange(right, 1, right.length);
+            index++;//这个很重要
+        }
+
+        return result;
+    }
 
 
     /**

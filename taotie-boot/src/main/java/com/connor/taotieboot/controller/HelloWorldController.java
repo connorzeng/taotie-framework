@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @PropertySource("classpath:user.yml")
@@ -29,6 +31,16 @@ public class HelloWorldController implements ApplicationContextAware {
     @RequestMapping("/hello")
     public String index() {
         return "Hello World";
+    }
+
+    @RequestMapping("/string")
+    public String stringTest() {
+        List<String> a = new ArrayList<>();
+        int i = 0;
+        while(true){
+            a.add(String.valueOf(i++).intern());
+        }
+
     }
 
     @Override

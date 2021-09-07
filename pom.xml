@@ -24,6 +24,7 @@
         <module>taotie-jdk</module>
         <module>taotie-other</module>
         <module>taotie-boot</module>
+        <module>taotie-mvc</module>
 
     </modules>
 
