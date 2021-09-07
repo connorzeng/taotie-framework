@@ -18,7 +18,7 @@ public class WebMvcCustomizer implements WebServerFactoryCustomizer<TomcatServle
      */
     @Override
     public void customize(TomcatServletWebServerFactory factory) {
-        factory.setPort(9090);
+        factory.setPort(8080);
         factory.setContextPath("/demo");
     }
 
