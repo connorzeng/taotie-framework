@@ -1,5 +1,7 @@
 package com.connor.taotieboot.controller;
 
+import com.connor.taotieboot.service.AService;
+import com.connor.taotieboot.service.BService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,9 +26,33 @@ public class HelloWorldController implements ApplicationContextAware {
     @Autowired
     private ApplicationContext context;
 
+
+//Caused by: org.springframework.beans.factory.BeanCurrentlyInCreationException:
+// Error creating bean with name 'BServiceImpl': Bean with name 'BServiceImpl' has been injected into other beans
+// [AServiceImpl] in its raw version as part of a circular reference, but has eventually been wrapped.
+// This means that said other beans do not use the final version of the bean. This is often the result of over-eager type
+// matching - consider using 'getBeanNamesForType' with the 'allowEagerInit' flag turned off, for example.
+// at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:631) ~[spring-beans-5.3.8.jar:5.3.8]
+//    @Autowired
+//    private BService bService;
+
+
+    // helloWorldController --> aService --> bService ---->(aService)
+//    @Autowired
+//    private AService aService;
+
     // 注入yml
     @Value("${ymalName}")
     private String coutry;
+
+    @RequestMapping("/testCicle")
+    public String testCicle() {
+
+        //bService.sayBHello();
+//        aService.sayAHello();
+
+        return "Hello World";
+    }
 
     @RequestMapping("/hello")
     public String index() {

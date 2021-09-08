@@ -2,7 +2,7 @@ package com.connor.another.config;
 
 
 import com.connor.taotieboot.dto.Red;
-import com.connor.taotieboot.service.AccountService;
+import com.connor.taotieboot.service.AService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Configuration;
 public class AcctServiceAutoConfiguration {
 
 
-    @Bean
-    @ConditionalOnClass(Red.class)
-    public AccountService accountService(){
-
-        return new AccountService();
-    }
+//    @Bean
+//    @ConditionalOnClass(Red.class)
+//    public AService accountService(){
+//
+//        //return new AService();
+//    }
 
 }
