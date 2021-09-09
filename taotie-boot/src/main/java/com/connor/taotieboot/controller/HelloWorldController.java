@@ -2,11 +2,13 @@ package com.connor.taotieboot.controller;
 
 import com.connor.taotieboot.service.AService;
 import com.connor.taotieboot.service.BService;
+import com.connor.taotieboot.service.impl.BServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@PropertySource("classpath:user.yml")
+@PropertySource({"classpath:application.yml","classpath:user.yml"})
 public class HelloWorldController implements ApplicationContextAware {
 
     @PostConstruct
@@ -33,13 +35,20 @@ public class HelloWorldController implements ApplicationContextAware {
 // This means that said other beans do not use the final version of the bean. This is often the result of over-eager type
 // matching - consider using 'getBeanNamesForType' with the 'allowEagerInit' flag turned off, for example.
 // at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:631) ~[spring-beans-5.3.8.jar:5.3.8]
-//    @Autowired
-//    private BService bService;
+    @Autowired
+    @Lazy
+    //private BServiceImpl bService;//在代理类的情况下回抛出错误
+    private BService bService;
+
+    @Autowired
+    @Lazy
+    //private BServiceImpl bService;//在代理类的情况下回抛出错误
+    private BServiceImpl bServiceImpl;
 
 
     // helloWorldController --> aService --> bService ---->(aService)
-//    @Autowired
-//    private AService aService;
+    @Autowired
+    private AService aService;
 
     // 注入yml
     @Value("${ymalName}")
@@ -48,7 +57,9 @@ public class HelloWorldController implements ApplicationContextAware {
     @RequestMapping("/testCicle")
     public String testCicle() {
 
-        //bService.sayBHello();
+        bServiceImpl.sayBHello();
+        bServiceImpl.sayHelloPrivate();
+
 //        aService.sayAHello();
 
         return "Hello World";

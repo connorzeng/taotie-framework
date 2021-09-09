@@ -1,0 +1,5 @@
+## 中文会有乱码
+connor.name: 曾罡
+
+## false: 使用JDK代理,true使用CGLIB代理
+# spring.aop.proxy-target-class: true

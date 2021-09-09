@@ -13,7 +13,13 @@
 
     <artifactId>taotie-boot</artifactId>
     <version>1.0.2</version>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.7</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
