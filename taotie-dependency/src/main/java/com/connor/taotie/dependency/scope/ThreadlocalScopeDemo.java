@@ -1,10 +1,13 @@
 package com.connor.taotie.dependency.scope;
 
 
+import ch.qos.logback.core.util.TimeUtil;
 import com.connor.taotie.ioc.pojo.Persion;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
+
+import java.util.concurrent.TimeUnit;
 
 import static com.connor.taotie.dependency.scope.ThreadlocalScope.SCOPE_NAME;
 
@@ -45,7 +48,9 @@ public class ThreadlocalScopeDemo {
             thread.start();
         }
 
-        Thread.sleep(1000);
+
+        TimeUnit.SECONDS.sleep(1);//使用工具类来进行sleep
+
         applicationContext.close();
     }
 
