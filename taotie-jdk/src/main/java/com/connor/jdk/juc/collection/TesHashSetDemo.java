@@ -1,44 +1,42 @@
 package com.connor.jdk.juc.collection;
 
 
+import org.apache.dubbo.common.utils.ConcurrentHashSet;
+
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.TimeUnit;
 
 /**
  * 测试集合类的安全.
  */
-public class Test {
+public class TesHashSetDemo {
 
     public static void main(String[] args) {
 
+//        Set<String> set = new HashSet<>();
 
-        // 1.并发修改异常 java.util.ConcurrentModificationException ( 使用Collections.synchronizedCollection无法解决 )
-        // 2.并发添加会造成数据被覆盖,丢数据.
-//        ArrayList<String> list = new ArrayList<>();
-//        Collection<String> list = new Vector<>();
-//        Collection<String> list = Collections.synchronizedCollection(new ArrayList<>());
-        Collection<String> list = new CopyOnWriteArrayList();
+
+        Set<String> set = new CopyOnWriteArraySet<>();
+//        Set<String> set = Collections.synchronizedSet(new HashSet<>());
 
         // 进行一个增加
         for (int i = 0; i < 10; i++) {
             int finalI = i;
             new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {
-                    list.add(finalI + "" + j + "");
+                    set.add(finalI + "" + j + "");
                     //System.out.println(list);
                 }
             }, i + "").start();
 
             new Thread(()->{
-                Iterator<String> iterator = list.iterator();
+                Iterator<String> iterator = set.iterator();
                 while(iterator.hasNext()){
                     String next = iterator.next();
                 }
             }).start();
         }
-
-
 
 
         try {
@@ -47,7 +45,8 @@ public class Test {
             e.printStackTrace();
         }
 
-        System.out.println(list.size());
+        System.out.println(set.size());
+
     }
 
 
