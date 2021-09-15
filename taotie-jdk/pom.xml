@@ -18,6 +18,10 @@
             <groupId>com.connor</groupId>
             <version>1.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+        </dependency>
     </dependencies>
 
 
