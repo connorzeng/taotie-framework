@@ -10,11 +10,14 @@ public class MapTest {
     public static void main(String[] args) {
 
 
-        //Map<String, String> map = new HashMap<String, String>(16, 0.75f);
+        Map<String, String> map = new HashMap<String, String>(50, 0.75f);
 
 
-        // Collections.synchronizedMap(new HashMap<>());
-        Map<String, String> map = new ConcurrentHashMap<>();
+//        // Collections.synchronizedMap(new HashMap<>());
+//        Map<String, String> map = new ConcurrentHashMap<>();
+        map.put("hello","hello");
+
+        System.out.println(map.size());
 
 
 

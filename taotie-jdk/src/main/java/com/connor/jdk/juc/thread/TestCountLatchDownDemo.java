@@ -33,7 +33,6 @@ public class TestCountLatchDownDemo {
         }).start();
 
         latch.await();
-
     }
 
     private static void testJoin() throws InterruptedException {

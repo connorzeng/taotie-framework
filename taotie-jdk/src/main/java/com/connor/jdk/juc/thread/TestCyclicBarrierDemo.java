@@ -16,6 +16,9 @@ public class TestCyclicBarrierDemo {
         // CyclicBarrier不会阻塞主线程.
         // 基于ReentraLoak, lock condition 唤醒机制.
         // 最后一个party执行完毕, cout==0,执行Runnable.run, 然后唤醒其他线程, 在调用nextGeneration进行重制cout
+        // CyclicBarrier 可以理解为: 加法计数器;
+        // CountDownLatch 可以理解为: 减法计数器;
+
 
         int N = 4;
         CyclicBarrier barrier  = new CyclicBarrier(N);

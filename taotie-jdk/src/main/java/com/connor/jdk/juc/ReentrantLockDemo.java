@@ -1,4 +1,4 @@
-package com.connor.jdk.lock;
+package com.connor.jdk.juc;
 
 import java.util.concurrent.locks.ReentrantLock;
 
