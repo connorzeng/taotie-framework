@@ -1,6 +1,8 @@
 package com.connor.jdk.juc.collection;
 
+import java.util.ArrayList;
 import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.TimeUnit;
 
 public class TestSynchronousQueueDemo {
 
@@ -15,6 +17,35 @@ public class TestSynchronousQueueDemo {
 
 
 
+        // 生产者
+        for (int i=0;i<10;i++){
+            new Thread(()->{
+                try {
+                    System.out.println("生产put");
+                    queue.put("1");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+
+
+        // 生产者
+        for (int i=0;i<1;i++){
+
+            int finalI = i;
+            new Thread(()->{
+                try {
+                    for (int j=0;j<10;j++){
+                        System.out.println("生产take");
+                        queue.take();
+                        TimeUnit.SECONDS.sleep(2);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
 
 
     }
