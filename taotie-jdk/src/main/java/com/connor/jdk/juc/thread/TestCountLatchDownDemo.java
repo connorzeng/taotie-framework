@@ -17,7 +17,7 @@ public class TestCountLatchDownDemo {
     private static void testCountDownLatch() throws InterruptedException {
 
         //基于AQS队列实现.
-        //1. 设置
+        //1. 设置锁的大小
 
         //新建latch锁.
         CountDownLatch latch = new CountDownLatch(1);

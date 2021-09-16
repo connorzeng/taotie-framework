@@ -1,38 +1,49 @@
 package com.connor.jdk.juc.thread;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class TestSemaphoreDemo {
 
+
     public static void main(String[] args) {
-        int N = 8;            //工人数
-        //setState(int newState); 初始化设置state为5
-        Semaphore semaphore = new Semaphore(5); //机器数目
-        for(int i=0;i<N;i++)
-            new Worker(i,semaphore).start();
-    }
 
-    static class Worker extends Thread{
-        private int num;
-        private Semaphore semaphore;
-        public Worker(int num,Semaphore semaphore){
-            this.num = num;
-            this.semaphore = semaphore;
-        }
+        Worker worker = new Worker();
 
-        @Override
-        public void run() {
-            try {
-                // CAS - 1
-                // CAS -1操作失败, doAcquireSharedInterruptibly(arg); 进入等待队列.
-                semaphore.acquire();
-                System.out.println("工人"+this.num+"占用一个机器在生产...");
-                Thread.sleep(2000);
-                System.out.println("工人"+this.num+"释放出机器");
-                semaphore.release();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        for (int i = 0; i < 8; i++) {
+            final int temp = i;
+            new Thread(() -> {
+                worker.doWork();
+            }, temp + "").start();
         }
     }
+
+
+}
+
+class Worker {
+
+    /**
+     * 总共8个位置
+     */
+    private Semaphore semaphore = new Semaphore(3);
+
+
+    /**
+     * 开始工作
+     */
+    public void doWork() {
+        try {
+            semaphore.acquire();
+            System.out.println(Thread.currentThread().getName() + ": 开始工作");
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(Thread.currentThread().getName() + ": 释放锁");
+            semaphore.release();
+        }
+    }
+
+
 }
