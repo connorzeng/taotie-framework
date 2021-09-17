@@ -10,7 +10,6 @@ public class TestCallableDemo {
 
     //Callable
     //Runnable, 没有返回值,不会抛出异常.
-
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         MyThread callable = new MyThread();
