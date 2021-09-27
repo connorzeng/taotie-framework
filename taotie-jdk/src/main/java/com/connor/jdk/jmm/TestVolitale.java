@@ -1,21 +1,118 @@
 package com.connor.jdk.jmm;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class TestVolitale {
 
-    //    private static int STATE = 1;
-    private static volatile int STATE = 1;
-    private static Object STATE_O = null;
 
     static int x = 0, y = 0;
     static int a = 0, b = 0;
 
+    // 使用Synchornized 也能保证可见性.
+    private static Object lock = new Object();
+    // 使用lock锁 也能保证可见性
+    private static ReentrantLock lockReen = new ReentrantLock(true);
+    private static int STATE = 1;
+    //    private static volatile int STATE = 1;
+    private static Object STATE_O = null;
+    // 要使用volitale 关键字是因为要达到一个线程的可见性.
+    // 不使用volitale 在check two的步骤无法感知TestVolitale已经被创建.
+    private volatile TestVolitale testVolitale = null;
 
     public static void main(String[] args) throws InterruptedException {
 
-        //testVolatile();
         testVolatile();
+//        testSynchornizedVisalbe();
+//        testLockVisiable();
         //testRecord();
 
+
+    }
+
+    private static void testLockVisiable() {
+
+        Thread a = new Thread(() -> {
+
+            System.out.println(" 等待STATE变更 ");
+            if (STATE == 1) {
+                System.out.println("现在的状态STATE = " + STATE);
+            }
+            try {
+                for (int i = 0; i < 6; i++) {
+                    lockReen.lock();
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                        System.out.println("现在的状态STATE = " + STATE);
+                    } finally {
+                        lockReen.unlock();
+                    }
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(" STATE change,now state value: " + STATE);
+        });
+        a.start();
+
+        Thread b = new Thread(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+                lockReen.lock();
+                try {
+                    TimeUnit.SECONDS.sleep(4);
+                    changeState();
+                } finally {
+                    lockReen.unlock();
+                }
+                System.out.println(" OK,STATE状态变更了 STATE = 2 ");
+
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        b.start();
+    }
+
+    // synchronized 也保证可见性.
+    private static void testSynchornizedVisalbe() {
+
+        Thread a = new Thread(() -> {
+
+            System.out.println(" 等待STATE变更 ");
+            if (STATE == 1) {
+                System.out.println("现在的状态STATE = " + STATE);
+            }
+            try {
+                for (int i = 0; i < 5; i++) {
+                    synchronized (lock) {
+                        TimeUnit.SECONDS.sleep(1);
+                        System.out.println("现在的状态STATE = " + STATE);
+                    }
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(" STATE change,now state value: " + STATE);
+        });
+        a.start();
+
+        Thread b = new Thread(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+                synchronized (lock) {
+                    TimeUnit.SECONDS.sleep(4);
+                    changeState();
+                }
+                System.out.println(" OK,STATE状态变更了 STATE = 2 ");
+
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        b.start();
 
 
     }
@@ -24,7 +121,7 @@ public class TestVolitale {
         int i = 0;
         while (true) {
             int i1 = testReorder(i);
-            if (i1 == 0){
+            if (i1 == 0) {
                 break;
             }
             i++;
@@ -61,9 +158,8 @@ public class TestVolitale {
             System.out.println("(" + x + "," + y + ")");
             return 0;
         }
-        return  1;
+        return 1;
     }
-
 
     private static void testVolatile() {
 
@@ -73,7 +169,6 @@ public class TestVolitale {
 
             // 如果STATE不加voliate,该线程永远无法感知变化
             while (STATE == 1) {
-
             }
 
             System.out.println(" STATE change,now state value: " + STATE);
@@ -87,8 +182,9 @@ public class TestVolitale {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(" OK,我要变更STATE状态了 ");
+
             changeState();
+            System.out.println(" OK,STATE状态变更了 STATE = 2 ");
         });
         b.start();
     }
@@ -96,11 +192,6 @@ public class TestVolitale {
     private static void changeState() {
         STATE = 2;
     }
-
-
-    // 要使用volitale关键字是因为要达到一个线程的可见性.
-    // 不使用volitale,在check two的步骤无法感知TestVolitale已经被创建.
-    private volatile TestVolitale testVolitale = null;
 
     /**
      * DCL
