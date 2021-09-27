@@ -1,10 +1,20 @@
 package com.connor.jdk.funtion;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamTestDemo {
+
+
+    // sorted 排序,
+    // limit 分页
+    //1. 过滤 filter
+    //2. 转换 map
+    //3. 聚合 reduce(聚合计算,求和,求平均值,求乘机)
+    //4. 输出
+    //      输出LIST,输出MAP,输出Array,分组输出.
 
     public static void main(String[] args) {
 
@@ -32,6 +42,47 @@ public class StreamTestDemo {
         }).forEach((s) -> {
             System.out.println(s);
         });
+
+
+        // 求和.
+        int i = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9).reduce(0, (u1, u2) -> {
+            return u1 + u2;
+        }).intValue();
+        System.out.println(i);
+
+        // 输出为List
+        List<Student> collect = students.stream().filter((stu) -> {
+            if (stu.getAge() < 30) {
+                return true;
+            }
+            return false;
+        }).collect(Collectors.toList());
+
+
+        // 输出为map
+        Stream<String> stream = Stream.of("APPL:Apple", "MSFT:Microsoft");
+        Map<String, String> map = stream
+                .collect(Collectors.toMap(
+                        // 把元素s映射为key:
+                        s -> s.substring(0, s.indexOf(':')),
+                        // 把元素s映射为value:
+                        s -> s.substring(s.indexOf(':') + 1)));
+        System.out.println(map);
+
+
+        // 首字母相同分组输出.
+        List<String> list = Arrays.asList("Apple", "Banana", "Blackberry", "Coconut", "Avocado", "Cherry", "Apricots");
+        Map<String, List<String>> groups = list.stream()
+                .collect(Collectors.groupingBy(s -> s.substring(0, 1), Collectors.toList()));
+        System.out.println(groups);
+
+        // 输出为数组
+        List<String> list2 = Arrays.asList("Apple", "Banana", "Orange");
+        String[] array = list2.stream().toArray(String[]::new);
+
+
+
+
     }
 
 }
