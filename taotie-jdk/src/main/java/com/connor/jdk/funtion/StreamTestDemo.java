@@ -1,7 +1,10 @@
 package com.connor.jdk.funtion;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,31 +27,30 @@ public class StreamTestDemo {
         students.add(new Student(30, "xiaozong"));
         students.add(new Student(20, "xiaoxianrou"));
 
-        students.stream().filter((s) -> {
-            if (s.getAge() >= 30) {
-                return true;
-            }
-            return false;
-        }).filter((s) -> {
-            if (s.getName().startsWith("x")) {
-                return true;
-            }
-            return false;
-        }).map((s)->{
-            if (s.getName().equals("xiaozong")){
-                s.setOk(true);
-            }
-            return s;
-        }).forEach((s) -> {
-            System.out.println(s);
+        //测试过滤
+        testFilterStudent(students);
+
+        //测试
+        testCollectionStudent(students);
+
+
+        //Stream 空流
+        Stream.empty().forEach((t) -> System.out.println(t + "hello"));
+
+        //Stream 无限流 - generate
+        Stream.generate(()->{
+            //生成一个随机数
+            return Math.random();
+        }).forEach((t)->{
+            System.out.println(t);
         });
 
+        //Stream 无线流 -
+        //Stream.iterate()
 
-        // 求和.
-        int i = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9).reduce(0, (u1, u2) -> {
-            return u1 + u2;
-        }).intValue();
-        System.out.println(i);
+    }
+
+    private static void testCollectionStudent(List<Student> students) {
 
         // 输出为List
         List<Student> collect = students.stream().filter((stu) -> {
@@ -79,9 +81,34 @@ public class StreamTestDemo {
         // 输出为数组
         List<String> list2 = Arrays.asList("Apple", "Banana", "Orange");
         String[] array = list2.stream().toArray(String[]::new);
+    }
 
 
+    /**
+     * students过滤
+     *
+     * @param students
+     */
+    private static void testFilterStudent(List<Student> students) {
 
+        students.stream().filter((s) -> {
+            if (s.getAge() >= 30) {
+                return true;
+            }
+            return false;
+        }).filter((s) -> {
+            if (s.getName().startsWith("x")) {
+                return true;
+            }
+            return false;
+        }).map((s) -> {
+            if (s.getName().equals("xiaozong")) {
+                s.setOk(true);
+            }
+            return s;
+        }).forEach((s) -> {
+            System.out.println(s);
+        });
 
     }
 
