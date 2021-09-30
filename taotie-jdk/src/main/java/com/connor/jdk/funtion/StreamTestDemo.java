@@ -1,6 +1,8 @@
 package com.connor.jdk.funtion;
 
 
+import com.sun.deploy.util.ArrayUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,30 +26,69 @@ public class StreamTestDemo {
         List<Student> students = new ArrayList<>();
         students.add(new Student(34, "connor"));
         students.add(new Student(28, "huaxiang"));
-        students.add(new Student(30, "xiaozong"));
-        students.add(new Student(20, "xiaoxianrou"));
+        students.add(new Student(30, "xiaozongold"));
+        students.add(new Student(20, "xiaozong"));
+        students.add(new Student(21, "x0"));
+        students.add(new Student(21, "x1"));
+        students.add(new Student(21, "x2"));
+        students.add(new Student(21, "x3"));
+
 
         //测试过滤
         testFilterStudent(students);
 
-        //测试
+        //测试flatmap
+        testFlatmap(students);
+
+        //测试收集
         testCollectionStudent(students);
 
+        //测试无限流
+        testStreamStream();
+    }
 
+    private static void testFlatmap(List<Student> students) {
+
+        // 打平操作
+        students.stream().flatMap((student)->{
+            ArrayList<String> stuAttrs = new ArrayList<>();
+            stuAttrs.add(student.getAge() + "");
+            stuAttrs.add(student.getName());
+            return stuAttrs.stream();
+        }).forEach(System.out::println);
+    }
+
+    private static void testStreamStream() {
         //Stream 空流
         Stream.empty().forEach((t) -> System.out.println(t + "hello"));
 
         //Stream 无限流 - generate
-        Stream.generate(()->{
+/*        Stream.generate(() -> {
             //生成一个随机数
             return Math.random();
-        }).forEach((t)->{
+        }).forEach((t) -> {
             System.out.println(t);
-        });
+        });*/
 
         //Stream 无线流 -
-        //Stream.iterate()
+        Student connor = new Student(34, "connor");
+        //Stream.iterate(connor, t -> switchAge(t));
+        //相当于这样的写法
+        //.parallel() 使用这个来递增会有问题
+        Stream.iterate(connor, (t) -> {
+            return switchAge(t);
+        }).limit(50).forEach(System.out::println);
 
+//        Stream.iterate(0, t -> t+1
+//        ).limit(50).forEach(System.out::println);
+    }
+
+
+    private static Student switchAge(Student t) {
+
+        Student newOne = t;
+        newOne.setAge(t.getAge() + 1);
+        return newOne;
     }
 
     private static void testCollectionStudent(List<Student> students) {
@@ -91,8 +132,11 @@ public class StreamTestDemo {
      */
     private static void testFilterStudent(List<Student> students) {
 
+        // parallel是乱序的
+        // 否则就是按照pipeline的顺序执行
+        //students.stream().parallel().filter((s) -> {
         students.stream().filter((s) -> {
-            if (s.getAge() >= 30) {
+            if (s.getAge() < 30) {
                 return true;
             }
             return false;
@@ -114,48 +158,3 @@ public class StreamTestDemo {
 
 }
 
-class Student {
-
-    private int age;
-    private String name;
-    private boolean isOk;
-
-    public Student(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isOk() {
-        return isOk;
-    }
-
-    public void setOk(boolean ok) {
-        isOk = ok;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "age=" + age +
-                ", name='" + name + '\'' +
-                ", isOk=" + isOk +
-                '}';
-    }
-}

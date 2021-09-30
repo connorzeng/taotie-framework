@@ -20,5 +20,7 @@ public class TestStreamReduceDemo {
         }).intValue();
         System.out.println(i); //362880
 
+
+
     }
 }
