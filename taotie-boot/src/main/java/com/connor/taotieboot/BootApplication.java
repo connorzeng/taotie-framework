@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 //@EnableClolor
-//@EnableAsync
+//@EnableAsync -- 需要引入org.aspectj#aspectjweaver才能自动依赖,所有需要写EnableAsync
 //@EnableAspectJAutoProxy
 public class BootApplication {
 
