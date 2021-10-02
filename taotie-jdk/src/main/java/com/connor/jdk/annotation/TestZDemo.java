@@ -24,6 +24,10 @@ public class TestZDemo {
         System.out.println("------");
         Arrays.stream(TestInterfaceSub.class.getDeclaredAnnotations()).forEach(System.out::println);
         System.out.println("------");
+
+        System.out.println(TestInterfaceSub.class.getName());
+        System.out.println(TestInterfaceSub.class.getCanonicalName());
+
     }
 
 

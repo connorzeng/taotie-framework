@@ -33,7 +33,14 @@ public class TestGenericDemo {
         //?无界
         List<?> fo3 = null;
         fo3 = new ArrayList<Object>();
+        GenUserClass.getStaticValue();
 
+
+
+
+        GenUserMethod method = new GenUserMethod();
+        String hello = method.getStaticValue("hello");
+        Integer staticValue = method.getStaticValue(1);
     }
 
 
@@ -65,9 +72,17 @@ class GenUserClass<K,V>{
      *
      *
      * @param <T>
-     * @return
      */
-    public static  <T> T getStaticValue(){
+    public static <T> T getStaticValue(){
         return null;
     }
+}
+class GenUserMethod{
+
+
+    // 静态方法使用类声明的泛型会抛出错误
+    public <V> V getStaticValue(V v){
+        return null;
+    }
+
 }
