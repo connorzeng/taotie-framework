@@ -5,6 +5,9 @@ import com.connor.taotieboot.service.impl.BServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/*
+ * 测试循环依赖
+ */
 @Configuration
 public class CircleConfiguration {
 
