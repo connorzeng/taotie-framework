@@ -13,4 +13,12 @@ public class Red {
     public void setClolor(String clolor) {
         this.clolor = clolor;
     }
+
+
+    @Override
+    public String toString() {
+        return "Red{" +
+                "clolor='" + clolor + '\'' +
+                '}';
+    }
 }
