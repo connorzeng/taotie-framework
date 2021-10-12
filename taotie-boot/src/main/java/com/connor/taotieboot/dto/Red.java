@@ -15,10 +15,10 @@ public class Red {
     }
 
 
-    @Override
-    public String toString() {
-        return "Red{" +
-                "clolor='" + clolor + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Red{" +
+//                "clolor='" + clolor + '\'' +
+//                '}';
+//    }
 }
