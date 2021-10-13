@@ -19,7 +19,16 @@ public class LinkedNodeDemo {
         //反转链表
         linkedNodeReverseTest();
 
+        //合并两个有序链表
+        mergerTwoSortedLinkedList();
 
+        //链表中倒数第K个节点.
+        findReverKNode();
+
+
+        //输入：(7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+        //输出：7 -> 8 -> 0 -> 7
+        //链表相加.
 
 
         //int.class
@@ -29,6 +38,80 @@ public class LinkedNodeDemo {
         int a = 1;
         Object b = (Object) a;
         System.out.println(b.getClass());
+    }
+
+    private static void findReverKNode() {
+
+        NodeOneWay<Integer> a = buildNormal();
+
+
+        //找到倒数第4个节点.
+        //双指针法.
+        int k = 4;
+
+        NodeOneWay<Integer> firstP = a;
+        NodeOneWay<Integer> secP = a;
+        for (int i = 0; i < k; i++) {
+            firstP = firstP.getNext();
+        }
+
+        while (firstP != null) {
+            if (firstP.getNext() == null){
+                System.out.println("倒数第"+k+"个节点:" + secP.getVaule());
+                break;
+            }
+
+            firstP = firstP.getNext();
+            secP = secP.getNext();
+        }
+    }
+
+    private static void mergerTwoSortedLinkedList() {
+
+
+        NodeOneWay<Integer> a = buildNormal();
+        NodeOneWay<Integer> b = buildNormal();
+        b.addTail(new NodeOneWay(12));
+        b.addTail(new NodeOneWay(12));
+        b.addTail(new NodeOneWay(13));
+
+        NodeOneWay<Integer> mergeNode = null;
+        NodeOneWay<Integer> aPoint = a;
+        NodeOneWay<Integer> bPoint = b;
+
+        while (aPoint != null || bPoint != null) {
+            boolean breakFlag = false;
+            NodeOneWay<Integer> smallTempOne = null;
+            if (aPoint != null && bPoint != null) {
+                if (aPoint.getVaule() < bPoint.getVaule()) {
+                    smallTempOne = new NodeOneWay(aPoint.getVaule());
+                    //a指针移动一下
+                    aPoint = aPoint.getNext();
+                } else {
+                    smallTempOne = new NodeOneWay(bPoint.getVaule());
+                    //b指针移动一下
+                    bPoint = bPoint.getNext();
+                }
+            } else if (aPoint == null && bPoint != null) {
+                smallTempOne = bPoint;
+                breakFlag = true;
+            } else {
+                smallTempOne = aPoint;
+                breakFlag = true;
+            }
+
+
+            if (mergeNode == null) {
+                mergeNode = smallTempOne;
+            } else {
+                mergeNode.addTail(smallTempOne);
+            }
+            if (breakFlag) {
+                break;
+            }
+        }
+        System.out.println("------merger-----");
+        mergeNode.printNodeAll();
     }
 
     private static void linkedNodeReverseTest() {
@@ -58,7 +141,7 @@ public class LinkedNodeDemo {
         NodeOneWay pre = null;
         NodeOneWay current = a;
         NodeOneWay next = a.getNext();
-        while(next != null){
+        while (next != null) {
 
             NodeOneWay temp = current;//临时记录
 
@@ -77,7 +160,7 @@ public class LinkedNodeDemo {
 
     private static NodeOneWay<Integer> reverseNode(NodeOneWay<Integer> a) {
 
-        if (a.getNext() == null){
+        if (a.getNext() == null) {
             //返回head
             return new NodeOneWay<>((Integer) a.getVaule());
         } else {
@@ -173,6 +256,7 @@ public class LinkedNodeDemo {
 
     //1,2,3,4,5,6,7,8,9,10
     private static NodeOneWay<Integer> buildA() {
+
         NodeOneWay<Integer> head = new NodeOneWay<>(1);
         for (int i = 2; i <= 10; i++) {
             //System.out.println(i);

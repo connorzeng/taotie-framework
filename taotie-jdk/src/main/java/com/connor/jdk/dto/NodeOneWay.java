@@ -92,7 +92,7 @@ public class NodeOneWay<T> {
         return tail;
     }
 
-    public Object getVaule() {
+    public T getVaule() {
 
         return  value;
     }
