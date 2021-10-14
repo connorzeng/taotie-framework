@@ -8,11 +8,30 @@ public class TestOomDemo {
 
     public static void main(String[] args) {
 
+        //heap区OOM
         //testHeapOOM();
-
-
         // a线程发生OOM, 不会影响导致B线程的运行, JVM没用崩溃.
-        testOneOOMOtherOK();
+        //testOneOOMOtherOK();
+
+
+
+        //栈溢出
+        testA();
+        
+        
+        //方法区溢出
+        //需要设置MaxMataSpaceSize
+        //不停的增强class
+
+
+
+        //直接内存溢出
+        //unsafe.allocateMeme...
+    }
+
+    private static void testA() {
+
+        testA();
 
     }
 
