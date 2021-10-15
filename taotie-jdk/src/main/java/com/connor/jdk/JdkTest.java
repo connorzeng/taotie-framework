@@ -27,6 +27,7 @@ public class JdkTest {
         System.out.println("d="+System.identityHashCode(d));
 
 
+
     }
 
 }
