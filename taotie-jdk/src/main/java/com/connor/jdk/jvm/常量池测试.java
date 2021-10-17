@@ -35,19 +35,30 @@ public class 常量池测试 {
         System.out.println("s1==s5 " + Boolean.toString( s1 == s5));
 
 
+        //测试String1
+        testString1();
+
+
+
+        //测试String
+        test();
+
+
+        //
+    }
+
+    //CONSTANT_Utf8_info
+    //CONSTANT_String_info 有什么区别
+    private static void testString1() {
+
         String s33 = new String("1") + new String("1");//据说在JDK1.7相等
 //        String s33 = "1"+"1";
 //        String s33t1 = "1";
 //        String s33t2= "1";
 //        String s33 = s33t1 + s33t2;
-        //String s44 = "11"; s44 = s33.intern();//false
-        String s44 = s33.intern();//true
-        System.out.println(s33 == s44);
-
-
-
-        //test
-        test();
+          String s44 = "11"; s44 = s33.intern();//false
+//        String s44 = s33.intern();//true
+//        System.out.println(s33 == s44);
     }
 
     private static void test() {
