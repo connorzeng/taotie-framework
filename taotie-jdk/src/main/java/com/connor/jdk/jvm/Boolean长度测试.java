@@ -1,6 +1,6 @@
 package com.connor.jdk.jvm;
 
-public class 基本类型字符长度测试 {
+public class Boolean长度测试 {
 
 
     private static final int SIZE = 100000;
