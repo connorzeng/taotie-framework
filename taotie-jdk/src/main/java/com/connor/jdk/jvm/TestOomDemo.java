@@ -1,5 +1,7 @@
 package com.connor.jdk.jvm;
 
+import com.connor.jdk.dto.User;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -14,9 +16,15 @@ public class TestOomDemo {
         //testOneOOMOtherOK();
 
 
+        // 静态常量JDK8中存放在heap区.
+        // Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+        //StaticFieldOOM bigStatic = new StaticFieldOOM();
+
+        //
+        StaticMethodOOM bigStatic = new StaticMethodOOM();
 
         //栈溢出
-        testA();
+        //testA();
         
         
         //方法区溢出
@@ -81,4 +89,56 @@ public class TestOomDemo {
 
         System.out.println("afterALL");
     }
+}
+class StaticFieldOOM {
+
+    //static是在heap区域上面
+    //Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+    static User[][] users1 = new User[4096][4096];
+    static User[][] users2 = new User[4096][4096];
+    static User[][] users3 = new User[4096][4096];
+    static User[][] users4 = new User[4096][4096];
+    static User[][] users5 = new User[4096][4096];
+    static User[][] users6 = new User[4096][4096];
+
+}
+
+class StaticMethodOOM{
+
+    public static String getIndexFromFooAndJustFine(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }
+    public static String getIndexFromFooAndJustFine1(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }public static String getIndexFromFooAndJustFine2(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }public static String getIndexFromFooAndJustFine3(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }public static String getIndexFromFooAndJustFine4(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }public static String getIndexFromFooAndJustFine5(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }public static String getIndexFromFooAndJustFine6(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }
+    public static String getIndexFromFooAndJustFine7(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }
+    public static String getIndexFromFooAndJustFine8(){
+        User[][] users6 = new User[4096][4096];
+        return "hello,iamfile";
+    }
+
+
+
+
+
 }
