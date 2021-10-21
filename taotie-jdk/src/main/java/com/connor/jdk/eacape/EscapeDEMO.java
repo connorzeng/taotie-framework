@@ -21,8 +21,6 @@ public class EscapeDEMO {
     public static void main(String[] args) {
         //方法逃逸
         sayHello();
-
-
         //线程逃逸
         //如果没有线程,可以sync同步擦除.
         //兑现只有这一个线程在使用, 没有其他线程使用
