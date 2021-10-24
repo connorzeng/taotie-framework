@@ -10,5 +10,11 @@ public class TestThreadTree {
 
         String name = a.getThreadGroup().getName();//main
         System.out.println(name);
+
+        System.out.println(a.getName());
+        System.out.println(a.getId());
+
+
+
     }
 }

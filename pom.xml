@@ -25,7 +25,7 @@
         <module>taotie-other</module>
         <module>taotie-boot</module>
         <module>taotie-bok</module>
-
+        <module>taotie-mainjar</module>
     </modules>
 
     <properties>
