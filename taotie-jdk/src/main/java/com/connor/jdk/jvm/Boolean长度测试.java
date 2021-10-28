@@ -12,7 +12,7 @@ public class Boolean长度测试 {
 
         System.gc();
         long startMem = getMemory();
-        enum
+
         for (int i=0; i < SIZE; i++)
         {
             first[i] = new LotsOfBooleans();
@@ -26,7 +26,7 @@ public class Boolean长度测试 {
 
         System.gc();
         startMem = getMemory();
-        for (int i=0; i < SIZE; i++)enum
+        for (int i=0; i < SIZE; i++)
         {
             second[i] = new LotsOfInts();
         }
