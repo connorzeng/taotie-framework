@@ -6,9 +6,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-// 1. sleep, wait可以响应interrupted, 通过打断
+// 1. sleep, wait可以响应interrupted, 通过打断, join其实也是wait,也可以被中断
 // 2. 运行中的线程,通过标志位打断.(跑批线程)
 // 3. 通过Runtime.getRuntime().addShutdownHook(t);
+// 4. synchronied等待队列中的线程不可以打断.同理Reentralock.lock也不能打断线程
+// 5. Reentralock有一个acquireInterruptibly 可以进行终端
 public class TestInterrupted {
 
 
