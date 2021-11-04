@@ -27,6 +27,7 @@
         <module>taotie-bok</module>
         <module>taotie-mainjar</module>
         <module>taotie-tool</module>
+        <module>taotie-nettyserver</module>
     </modules>
 
     <properties>
