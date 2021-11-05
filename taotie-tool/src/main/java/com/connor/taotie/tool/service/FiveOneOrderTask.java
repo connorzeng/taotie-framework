@@ -3,6 +3,9 @@ package com.connor.taotie.tool.service;
 import com.connor.taotie.tool.delay.Task;
 import com.connor.taotie.tool.delay.TaskHandler;
 
+import java.util.concurrent.Delayed;
+import java.util.concurrent.TimeUnit;
+
 public class FiveOneOrderTask implements Task {
 
     @Override
@@ -39,6 +42,17 @@ public class FiveOneOrderTask implements Task {
 
     @Override
     public int getDelayTime() {
+        return 0;
+    }
+
+    @Override
+    public long getDelay(TimeUnit unit) {
+        //必须用一个计算好的时间来减去当前时间.
+        return getDelayTime() - System.currentTimeMillis();
+    }
+
+    @Override
+    public int compareTo(Delayed o) {
         return 0;
     }
 }

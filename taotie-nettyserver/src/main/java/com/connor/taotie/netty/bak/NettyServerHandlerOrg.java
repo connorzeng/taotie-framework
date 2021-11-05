@@ -1,4 +1,4 @@
-package com.connor.taotie.netty;
+package com.connor.taotie.netty.bak;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -43,7 +43,6 @@ public class NettyServerHandlerOrg  extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
         System.out.println("active");
         super.channelActive(ctx);
     }

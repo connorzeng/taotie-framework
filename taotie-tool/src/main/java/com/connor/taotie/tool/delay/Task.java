@@ -1,6 +1,8 @@
 package com.connor.taotie.tool.delay;
 
-public interface Task {
+import java.util.concurrent.Delayed;
+
+public interface Task extends Delayed {
 
     /**
      * 0: 马上执行

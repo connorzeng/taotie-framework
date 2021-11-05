@@ -27,14 +27,11 @@ public class TestMain {
 
     private static void testWhile() {
         while (true) {
-
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-
             }
         }
-
     }
 
 }
