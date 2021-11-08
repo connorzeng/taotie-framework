@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //@EnableClolor
 //@EnableAsync -- 需要引入org.aspectj#aspectjweaver才能自动依赖,所有需要写EnableAsync
 //@EnableAspectJAutoProxy
-@ImportResource("classpath:/springBean.xml")//
+@ImportResource("classpath:/springBean.xml")///demo/hello
 public class BootApplication {
 
 
