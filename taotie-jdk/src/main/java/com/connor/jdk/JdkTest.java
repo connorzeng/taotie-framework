@@ -1,5 +1,7 @@
 package com.connor.jdk;
 
+import java.util.HashMap;
+
 public class JdkTest {
 
 
@@ -26,7 +28,22 @@ public class JdkTest {
         System.out.println("c="+System.identityHashCode(c));
         System.out.println("d="+System.identityHashCode(d));
 
+        int aa = 1254;
+        int bb = 1254;
+        long aal = 12563;
+        long bbl = 12563;
+        float af = 1.0f;
+        float bf = 1.0f;
+        System.out.println(aa == bb);
+        System.out.println(aal == bbl);
+        System.out.println(af == bf);
 
+
+        HashMap<Integer,Integer> hashMap = new HashMap<Integer, Integer>();//必须是包装类
+        hashMap.put(1,1);//被自动包装
+
+        String astr = ";;";
+        int i = astr.hashCode();
 
     }
 

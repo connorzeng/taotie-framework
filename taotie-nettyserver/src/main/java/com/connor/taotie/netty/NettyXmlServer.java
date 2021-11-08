@@ -1,17 +1,15 @@
 package com.connor.taotie.netty;
 
-import com.connor.taotie.netty.heartbeat.MyHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.xml.XmlFrameDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.handler.timeout.IdleStateHandler;
 
-public class NettyServer {
+public class NettyXmlServer {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -39,12 +37,12 @@ public class NettyServer {
                         ChannelPipeline pipeline = socketChannel.pipeline();
                         // 给pipeline 设置处理器
                         // 添加分隔符
-                        pipeline.addLast(new LineBasedFrameDecoder(1024, true, false));
+                        pipeline.addLast(new XmlFrameDecoder(1048576));
+
                         //添加handler
-                        pipeline.addLast(new NettyServerOutBoundHandler());
-                        pipeline.addLast(new IdleStateHandler(5, 0, 0));
                         pipeline.addLast(new NettyServerHandler());
-                        pipeline.addLast(new MyHandler());//触发Idle心跳后,进行响应
+                        pipeline.addLast(new NettyServerOutBoundHandler());
+
                     }
                 });
         // 绑定端口  启动服务

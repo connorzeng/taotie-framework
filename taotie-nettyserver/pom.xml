@@ -17,6 +17,14 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.65.Final</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml/aalto-xml -->
+        <!--  -->
+        <dependency>
+            <groupId>com.fasterxml</groupId>
+            <artifactId>aalto-xml</artifactId>
+            <version>1.3.0</version>
+        </dependency>
     </dependencies>
 
 

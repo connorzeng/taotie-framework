@@ -9,7 +9,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 
-public class NettyClientDemo {
+public class NettyClient {
     public static void main(String[] args) {
 
 

@@ -27,11 +27,11 @@ public class NettyServerHandler extends SimpleChannelInboundHandler {
      * @param ctx
      * @throws Exception
      */
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        // writeAndFlush 是组合方法
-        ctx.writeAndFlush(Unpooled.copiedBuffer("你好啊，客户端....^_^", CharsetUtil.UTF_8));
-    }
+//    @Override
+//    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+//        // writeAndFlush 是组合方法
+//        ctx.writeAndFlush(Unpooled.copiedBuffer("你好啊，客户端....^_^", CharsetUtil.UTF_8));
+//    }
 
 
     @Override

@@ -6,6 +6,7 @@ import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +23,34 @@ public class SentinelEchoController {
     @PostConstruct
     public void init() {
         List<FlowRule> rules = new ArrayList<>();
+
+        //资源1
         FlowRule rule = new FlowRule();
-        rule.setResource("HelloWorld");
+        rule.setResource("resource1");
         rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
         // Set limit QPS to 20.
         rule.setCount(2);
         rules.add(rule);
+
+
+        //资源2
+        rule.setResource("resource2");
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        // Set limit QPS to 20.
+        rule.setCount(2);
+        rules.add(rule);
+
+        //资源3
+        rule.setResource("resource3");
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        // Set limit QPS to 20.
+        rule.setCount(2);
+        rules.add(rule);
+
+        DegradeRule rule1 = new DegradeRule();
+
+
+
         FlowRuleManager.loadRules(rules);
     }
 
@@ -36,7 +59,7 @@ public class SentinelEchoController {
 
         Entry entry = null;
         try {
-            entry = SphU.entry("HelloWorld");
+            entry = SphU.entry("resource1");
             // 资源中的逻辑.
             System.out.println("hello world");
             return "hello";
@@ -56,10 +79,28 @@ public class SentinelEchoController {
 
         //创建Context
         ContextUtil.enter("entryOne","appA");
-
         Entry entry = null;
         try {
-            entry = SphU.entry("HelloWorld");
+            entry = SphU.entry("resource1");
+            entry = SphU.entry("resource2");
+            // 资源中的逻辑.
+            System.out.println("hello world");
+        } catch (BlockException ex) {
+            ex.printStackTrace();
+            return "error";
+        } finally {
+            if (entry != null) {
+                entry.exit();
+                ContextUtil.exit();
+            }
+        }
+
+
+        //创建Context
+        ContextUtil.enter("entryTwo","appA");
+        Entry entry3 = null;
+        try {
+            entry3 = SphU.entry("resource3");
             // 资源中的逻辑.
             System.out.println("hello world");
             return "hello";
@@ -68,8 +109,11 @@ public class SentinelEchoController {
             return "error";
         } finally {
             if (entry != null) {
-                entry.exit();
+                entry3.exit();
+                ContextUtil.exit();
             }
         }
     }
+
+
 }
