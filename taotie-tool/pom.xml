@@ -11,12 +11,11 @@
 
     <artifactId>taotie-tool</artifactId>
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.connor</groupId>
             <artifactId>taotie-other</artifactId>
-            <version>1.0.2</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 

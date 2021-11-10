@@ -24,7 +24,7 @@
         <module>taotie-jdk</module>
         <module>taotie-other</module>
         <module>taotie-boot</module>
-        <module>taotie-bok</module>
+      <!--  <module>taotie-bok</module>-->
         <module>taotie-mainjar</module>
         <module>taotie-tool</module>
         <module>taotie-nettyserver</module>
@@ -109,11 +109,11 @@
             <artifactId>auto-service</artifactId>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.nx.vip.samuel</groupId>
             <artifactId>nx-vip-tool</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

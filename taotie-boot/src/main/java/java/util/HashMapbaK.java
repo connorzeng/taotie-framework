@@ -1,6 +1,6 @@
 package java.util;
 
-public class HashMap {
+public class HashMapbaK {
 
 
     /**

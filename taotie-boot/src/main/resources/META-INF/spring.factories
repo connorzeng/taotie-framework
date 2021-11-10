@@ -1,3 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.connor.another.config.AcctServiceAutoConfiguration
 
+## ≈‰÷√listener
+org.springframework.boot.SpringApplicationRunListener=\
+com.connor.another.config.HelloApplicationRunListener
