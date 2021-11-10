@@ -9,6 +9,7 @@ import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,18 @@ import java.util.List;
 
 @RestController
 public class SentinelEchoController {
+
+
+
+    @Value("${connor.name}")
+    String connorName;
+
+
+
+    @Value("${connorNanme.hello}")
+    String connorNanmeHello;
+
+
 
 
     @PostConstruct
@@ -62,7 +75,7 @@ public class SentinelEchoController {
             entry = SphU.entry("resource1");
             // 资源中的逻辑.
             System.out.println("hello world");
-            return "hello";
+            return connorNanmeHello;
         } catch (BlockException ex) {
             ex.printStackTrace();
             return "error";
