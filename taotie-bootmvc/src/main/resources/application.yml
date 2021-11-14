@@ -1,0 +1,16 @@
+connor:
+  bind:
+    name: zenggang
+    age: 18
+    list:
+      - java
+      - c
+      - python
+    map:
+      wechat: 小灰灰blog
+      blogs: http://blog.hhui.top
+      git: http://github.com/liuyueyi
+
+
+
+

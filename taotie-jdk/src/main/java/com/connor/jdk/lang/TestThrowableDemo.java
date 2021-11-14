@@ -2,6 +2,10 @@ package com.connor.jdk.lang;
 
 public class TestThrowableDemo {
 
+    public static final String hello = "hello1";
+    public static final UserDto USER_DTO = new UserDto("zenggang");
+    public static final UserDto USER_DTO1 = new UserDto("zenggang");
+
     public static void main(String[] args) {
 
         try {
@@ -25,6 +29,9 @@ public class TestThrowableDemo {
         System.out.println("hello");
         TestDemo testDemo = new TestDemo();
         System.out.println(testDemo.toString());
+
+        System.out.println("hello1" == hello);
+        System.out.println(USER_DTO == USER_DTO1);;
 
     }
 }

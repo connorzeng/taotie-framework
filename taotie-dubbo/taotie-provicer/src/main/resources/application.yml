@@ -1,0 +1,19 @@
+
+
+##zk
+dubbo:
+  registry:
+    address: zookeeper://192.168.31.18:2181
+    timeout: 100000
+  protocol:
+    name: dubbo
+    port: 25585
+  scan:
+    base-packages: com.connor.taotie.provider
+  provider:
+    loadbalance:
+    timeout: 6000
+
+spring:
+  application:
+    name: OrderApp
