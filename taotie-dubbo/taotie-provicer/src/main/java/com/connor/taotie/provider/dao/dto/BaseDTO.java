@@ -1,5 +1,6 @@
 package com.connor.taotie.provider.dao.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,6 +15,7 @@ public class BaseDTO {
 //    updated_by              VARCHAR(100) NOT NULL COMMENT '更新人'
     private Date createTime;
     private Date updatedTime;
-    private String createBy;
-    private String updatedBy;
+
+    private String createBy = "sys";
+    private String updatedBy = "sys";
 }
