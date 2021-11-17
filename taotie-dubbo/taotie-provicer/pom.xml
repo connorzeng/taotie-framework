@@ -13,12 +13,12 @@
 
     <dependencies>
 
-        <!--<dependency>
+        <dependency>
             <groupId>com.connor</groupId>
             <artifactId>taotie-baseService</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
 

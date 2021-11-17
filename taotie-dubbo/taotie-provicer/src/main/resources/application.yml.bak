@@ -1,9 +1,15 @@
+spring:
+  application:
+    name: OrderApp
+
 
 
 ##zk
 dubbo:
   registry:
     address: zookeeper://192.168.31.18:2181
+    ## zookeeper://192.168.31.18:2181
+    ## zookeeper://localhost:2181
     timeout: 100000
   protocol:
     name: dubbo
@@ -13,7 +19,3 @@ dubbo:
   provider:
     loadbalance:
     timeout: 6000
-
-spring:
-  application:
-    name: OrderApp
