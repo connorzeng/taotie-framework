@@ -14,6 +14,7 @@
         <module>taotie-provicer</module>
         <module>taotie-baseService</module>
         <module>taotie-zookeeper</module>
+        <module>taotie-mq</module>
     </modules>
 
     <artifactId>taotie-dubbo</artifactId>

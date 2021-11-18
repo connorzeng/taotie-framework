@@ -13,7 +13,7 @@ public class User extends BaseDTO {
     mobile                  VARCHAR(20) COMMENT '用户银行预留手机号',
     email                   VARCHAR(50) COMMENT '用户邮箱',*/
     @TableId
-    private int becifNo;
+    private Integer becifNo;
     private String name;
     private String mobile;
     private String email;
