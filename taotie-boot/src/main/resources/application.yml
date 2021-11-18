@@ -9,8 +9,7 @@ connor.name1: '*'
 
 
 ## 示例代码: Guns
----
----
+
 
 
 ## false: 使用JDK代理,true使用CGLIB代理
@@ -20,5 +19,6 @@ connor.name1: '*'
 ## 配置代码提示.TODO
 ## springBoot的监控特性
 ## 健康检查,监控,跟踪,环境变量,线程dump
-
-
+spring:
+  application:
+    name: connor-boot
