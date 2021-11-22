@@ -5,10 +5,13 @@ import com.connor.taotie.mybatis.mappper.UserMapper;
 import com.connor.taotie.mybatis.mappper.dto.Mch;
 import com.connor.taotie.mybatis.mappper.dto.User;
 import com.connor.taotie.mybatis.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Component
 public class UserServiceImpl implements UserService {
 
@@ -19,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    @Async
     public void doBiz() {
 
         Mch mch = new Mch();
@@ -36,5 +40,23 @@ public class UserServiceImpl implements UserService {
         user.setMobile("15815585147");
         userMapper.insert(user);
 
+    }
+
+    @Override
+    public void echo() {
+        log.info("echo-----------");
+    }
+
+
+    //会不会进入代理呢?
+    public void echoNoInterface() {
+        log.info("echoNoInterface-----------");
+    }
+
+
+    //自调用会不会进入代理呢
+    public void echoSelf() {
+        echo();
+        log.info("echoSelf-----------");
     }
 }

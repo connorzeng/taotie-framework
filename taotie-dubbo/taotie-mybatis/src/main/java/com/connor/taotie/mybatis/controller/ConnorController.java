@@ -20,10 +20,4 @@ public class ConnorController {
         return new RepsponseDTO("hello", "hello", "00");
     }
 
-
-    @RequestMapping("/testAop")
-    public RepsponseDTO testAop() {
-
-        return new RepsponseDTO("hello", "hello", "00");
-    }
 }
