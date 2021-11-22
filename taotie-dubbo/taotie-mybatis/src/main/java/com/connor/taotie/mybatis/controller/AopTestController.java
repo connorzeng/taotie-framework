@@ -4,14 +4,19 @@ import com.connor.taotie.baseservice.dto.RepsponseDTO;
 import com.connor.taotie.mybatis.service.NormalService;
 import com.connor.taotie.mybatis.service.UserService;
 import com.connor.taotie.mybatis.service.impl.NoopServiceImpl;
+import com.connor.taotie.mybatis.service.impl.NormalServiceImp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
 public class AopTestController {
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Autowired
     private NoopServiceImpl noopServiceImpl;
@@ -36,11 +41,13 @@ public class AopTestController {
     }
 
 
-
     @RequestMapping("/testAopInterface")
     public RepsponseDTO testAopInterface() {
         normalService.nomalEcho();
-        //normalService.nomalEchoNoInterface();
+
+        //NormalServiceImp  在JDK代理中是无法获取的
+        NormalServiceImp normalServiceImp = (NormalServiceImp) normalService;
+        normalServiceImp.nomalEchoNoInterface();
         return new RepsponseDTO("hello", "hello", "00");
     }
 
