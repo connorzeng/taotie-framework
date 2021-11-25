@@ -1,13 +1,12 @@
 package com.connor.taotie.mybatis.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.connor.taotie.mybatis.mappper.MchMapper;
 import com.connor.taotie.mybatis.mappper.UserMapper;
-import com.connor.taotie.mybatis.mappper.dto.Mch;
 import com.connor.taotie.mybatis.mappper.dto.User;
 import com.connor.taotie.mybatis.service.MchService;
 import com.connor.taotie.mybatis.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -37,6 +36,24 @@ public class UserServiceImpl implements UserService {
         userMapper.insert(user);
 
         mchService.inserMch();
+    }
+
+    @Override
+    public User doSerarch() {
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name","曾罡");
+        User user = userMapper.selectOne(queryWrapper);
+
+
+
+        QueryWrapper<User> queryWrapper1 = new QueryWrapper<>();
+        queryWrapper1.eq("name","曾罡");
+        User user2 = userMapper.selectOne(queryWrapper1);
+
+
+        return  user2;
+
     }
 
 
