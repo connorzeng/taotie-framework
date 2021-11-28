@@ -9,7 +9,7 @@ public class BaseDTO {
 //    updated_time            DATETIME     NOT NULL DEFAULT now() COMMENT '更新时间',
 //    created_by              VARCHAR(100) NOT NULL COMMENT '创建人',
 //    updated_by              VARCHAR(100) NOT NULL COMMENT '更新人'
-    private Date createTime;
+    private Date createdTime;
     private Date updatedTime;
 
     private String createdBy = "sys";
