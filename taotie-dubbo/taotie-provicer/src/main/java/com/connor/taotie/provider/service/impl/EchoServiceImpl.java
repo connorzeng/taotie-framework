@@ -3,7 +3,7 @@ package com.connor.taotie.provider.service.impl;
 import com.connor.taotie.baseservice.OrderService;
 import com.connor.taotie.baseservice.dto.RepsponseDTO;
 import org.apache.dubbo.config.annotation.DubboService;
-
+import org.apache.dubbo.config.annotation.Service;
 
 
 @DubboService(cluster = "failfast",loadbalance = "random")//可以配置到接口级别

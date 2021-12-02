@@ -9,9 +9,7 @@ import java.util.stream.Stream;
 public class FockJoinDemo {
 
     public static void main(String[] args) {
-
-
-
+        ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
 
 
     }
