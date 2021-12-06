@@ -25,9 +25,9 @@ public class Sort {
 //        System.out.println(j);
 //        System.out.println(y);
 
-        //int[] tables = {8, 5, 9, 1, 0, 3};
+        int[] tables = {8, 5, 9, 1, 0, 3};
         //int[] tables = {8, 5, 9, 1, 0, 3, 101, 2, 2, 10, 7};
-        int[] tables = {1, 2, 3, 4, 4, 9, 1, 4, 9};
+//        int[] tables = {1, 2, 3, 4, 4, 9, 1, 4, 9};
 
         System.out.println(tables.length);
         System.out.println(tables[tables.length - 1]);

@@ -2,6 +2,7 @@ package com.connor.taotie.provider.service.impl;
 
 import com.connor.taotie.baseservice.OrderService;
 import com.connor.taotie.baseservice.dto.RepsponseDTO;
+import com.connor.taotie.provider.excetpion.HelloException;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Service;
 
@@ -14,7 +15,8 @@ public class EchoServiceImpl implements OrderService {
     public RepsponseDTO echoService() {
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
+            throw new HelloException("this is error message","99999","erroe");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
