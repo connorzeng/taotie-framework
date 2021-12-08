@@ -22,6 +22,45 @@ public class 接雨水 {
 
         int j = minStatic(height);
         System.out.println(i);
+
+
+        int x = stackResolver(height);
+        System.out.println(x);
+
+    }
+
+    private static int stackResolver(int[] height) {
+
+        int sum = 0;
+        if (height == null || height.length <= 2){
+            return sum;
+        }
+
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+
+        for (int i = 1; i < height.length; i++) {
+
+            while (!stack.empty() && height[stack.peek()] < height[i]){
+
+                int groudH = height[stack.pop()];//地面高度
+                if (stack.empty()){
+                    break;
+                }
+
+                int leftPillorIndex =  stack.pop();
+                int leftPillorH = height[leftPillorIndex];
+                int rightPillorH = height[i];
+                int waterH = Math.min(leftPillorH,rightPillorH) - groudH;
+                int waterW = i - leftPillorIndex - 1;
+
+                sum += waterH * waterW;
+            }
+
+            stack.push(i);
+        }
+
+        return sum;
     }
 
     public static int minStatic(int[] height) {
@@ -35,13 +74,13 @@ public class 接雨水 {
 
         // 栈
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < height.length; i ++) {
+        for (int i = 0; i < height.length; i++) {
 
             // 当前必须必入栈的柱子高,才能接住雨水
             // 水池一个台阶while循环一次
-            while (!stack.empty() && height[i] > height[stack.peek()]){
+            while (!stack.empty() && height[i] > height[stack.peek()]) {
                 int bashH = height[stack.pop()];//地基的尺寸
-                if (stack.empty()){
+                if (stack.empty()) {
                     //相邻的两个矮柱子,不盛水
                     break;
                 }
@@ -49,7 +88,7 @@ public class 接雨水 {
                 // 计算两堵墙之间的距离
                 int distance = i - stack.peek() - 1;
                 // 水平面的深度(两堵强中最矮的那堵墙)
-                int waterH = Math.min(height[i],height[stack.peek()]);
+                int waterH = Math.min(height[i], height[stack.peek()]);
 
                 sum += distance * (waterH - bashH);
             }
