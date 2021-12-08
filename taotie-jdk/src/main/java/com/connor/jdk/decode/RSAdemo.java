@@ -21,7 +21,7 @@ public class RSAdemo {
 
         genKeyPair();
         Character m = '我';
-        String message = "我我我我我我我"
+        String message = "我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我"
                 + "我我我我我我我"
                 + "我我我我我我我"
                 + "我我我我我我我"
@@ -191,5 +191,29 @@ public class RSAdemo {
         decriptCipher.init(Cipher.DECRYPT_MODE, priKey);
 
         return new String(decriptCipher.doFinal(bytes), "utf-8");
+    }
+
+
+    public static final String SIGNATURE_ALGORITHM = "SHA256withRSA";
+    public static final String ENCODE_ALGORITHM = "SHA-256";
+    public static byte[] sign(PrivateKey privateKey, String plainText) {
+        MessageDigest messageDigest;
+        byte[] signed = null;
+        try {
+            messageDigest = MessageDigest.getInstance(ENCODE_ALGORITHM);
+            messageDigest.update(plainText.getBytes());
+            byte[] outputDigest_sign = messageDigest.digest();
+            System.out.println("SHA-256编码后-----》"
+                    + org.apache.commons.codec.binary.Base64.encodeBase64String(outputDigest_sign));
+            Signature Sign = Signature.getInstance(SIGNATURE_ALGORITHM);
+            Sign.initSign(privateKey);
+            Sign.update(outputDigest_sign);
+            signed = Sign.sign();
+            System.out.println("SHA256withRSA签名后-----》"
+                    + org.apache.commons.codec.binary.Base64.encodeBase64String(signed));
+        } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
+            e.printStackTrace();
+        }
+        return signed;
     }
 }
