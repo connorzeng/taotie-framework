@@ -18,10 +18,40 @@ public class 接雨水 {
 //        System.out.println(-5>>4);//结果是-1,最多移动到-1
 //        System.out.println(-5>>>3);//结果是536870911
         int[] height = new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        int i = trap6(height);
+        //int i = trap6(height);
 
-        int j = minStatic(height);
-        System.out.println(i);
+        //int j = minStatic(height);
+        //System.out.println(i);
+
+        int f = twoPoint(height);
+        System.out.println(f);
+    }
+
+    private static int twoPoint(int[] height) {
+        int sum = 0;
+        // 面试官,你的需求是要返回0,还是报错?
+        if (height.length <= 2 || height == null) {
+            return sum;
+        }
+        int leftIndex = 0;
+        int rightIndex = height.length - 1;
+        int leftMax = 0;//左边的高墙
+        int rightMax = 0;//右边的高墙
+        while (leftIndex < rightIndex) {
+            leftMax = Math.max(leftMax,height[leftIndex]);
+            rightMax = Math.max(rightMax,height[rightIndex]);
+
+            if (height[leftIndex] < height[rightIndex]){
+                //哪边小,哪边的指针移动
+                sum += leftMax - height[leftIndex];
+                leftIndex++;
+            }else {
+
+                sum += rightMax - height[rightIndex];
+                rightIndex--;
+            }
+        }
+        return sum;
     }
 
     public static int minStatic(int[] height) {
@@ -35,13 +65,13 @@ public class 接雨水 {
 
         // 栈
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < height.length; i ++) {
+        for (int i = 0; i < height.length; i++) {
 
             // 当前必须必入栈的柱子高,才能接住雨水
             // 水池一个台阶while循环一次
-            while (!stack.empty() && height[i] > height[stack.peek()]){
+            while (!stack.empty() && height[i] > height[stack.peek()]) {
                 int bashH = height[stack.pop()];//地基的尺寸
-                if (stack.empty()){
+                if (stack.empty()) {
                     //相邻的两个矮柱子,不盛水
                     break;
                 }
@@ -49,7 +79,7 @@ public class 接雨水 {
                 // 计算两堵墙之间的距离
                 int distance = i - stack.peek() - 1;
                 // 水平面的深度(两堵强中最矮的那堵墙)
-                int waterH = Math.min(height[i],height[stack.peek()]);
+                int waterH = Math.min(height[i], height[stack.peek()]);
 
                 sum += distance * (waterH - bashH);
             }
