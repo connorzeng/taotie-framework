@@ -7,8 +7,8 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Service;
 
 
-@DubboService(cluster = "failfast",loadbalance = "random")//可以配置到接口级别
-public class EchoServiceImpl implements OrderService {
+@DubboService(cluster = "failfast",loadbalance = "random",delay = 100000)//可以配置到接口级别
+public class OrderServiceImpl implements OrderService {
 
 
     @Override
