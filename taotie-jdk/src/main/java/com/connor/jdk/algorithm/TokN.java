@@ -27,8 +27,6 @@ public class TokN {
 
         String s=Integer.toBinaryString(i);
         System.out.println(s);
-
-
     }
 
     private static int sortTopNByQuickSork(int[] tables, int left, int right, int k) {
