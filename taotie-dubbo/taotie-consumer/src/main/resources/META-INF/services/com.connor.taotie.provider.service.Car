@@ -1,0 +1,4 @@
+http=com.connor.taotie.provider.service.impl.BlueCar
+dubbo=com.connor.taotie.provider.service.impl.RedCar
+##需要配置wrapper
+com.connor.taotie.provider.service.impl.CarWrapperDAFDSAFSAF

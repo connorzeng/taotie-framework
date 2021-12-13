@@ -11,10 +11,15 @@ import org.springframework.stereotype.Service;
 //@Service
 public class AServiceImpl implements AService {
 
+    public AServiceImpl(){
+        System.out.println("");
+    }
+
+
     @Autowired
     private BService bService;
 
-
+    @Async
     @Override
     public void sayAHello() {
         System.out.println("sayAHello");

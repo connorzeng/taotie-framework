@@ -35,15 +35,15 @@ public class HelloWorldController implements ApplicationContextAware {
 // This means that said other beans do not use the final version of the bean. This is often the result of over-eager type
 // matching - consider using 'getBeanNamesForType' with the 'allowEagerInit' flag turned off, for example.
 // at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:631) ~[spring-beans-5.3.8.jar:5.3.8]
-    @Autowired
-    @Lazy
-    //private BServiceImpl bService;//在代理类的情况下回抛出错误
-    private BService bService;
+//    @Autowired
+//    @Lazy
+//    //private BServiceImpl bService;//在代理类的情况下回抛出错误
+//    private BService bService;
 
-    @Autowired
-    @Lazy
-    //private BServiceImpl bService;//在代理类的情况下回抛出错误
-    private BServiceImpl bServiceImpl;
+//    @Autowired
+//    @Lazy
+//    //private BServiceImpl bService;//在代理类的情况下回抛出错误
+//    private BServiceImpl bServiceImpl;
 
 
     // helloWorldController --> aService --> bService ---->(aService)
@@ -57,8 +57,8 @@ public class HelloWorldController implements ApplicationContextAware {
     @RequestMapping("/testCicle")
     public String testCicle() {
 
-        bServiceImpl.sayBHello();
-        bServiceImpl.sayHelloPrivate();
+//        bServiceImpl.sayBHello();
+//        bServiceImpl.sayHelloPrivate();
 
 //        aService.sayAHello();
 

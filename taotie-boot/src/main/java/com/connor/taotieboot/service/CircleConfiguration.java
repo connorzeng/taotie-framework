@@ -13,6 +13,11 @@ public class CircleConfiguration {
 
 
     @Bean
+    public BService bService(){
+        return  new BServiceImpl();
+    }
+
+    @Bean
     public AService aService(){
         return new AServiceImpl();
     }
@@ -21,10 +26,7 @@ public class CircleConfiguration {
     // BService-> AService -> BService(提前暴露)
     // BService-> AService
     // BService
-//    @Bean
-//    public BService bService(){
-//        return  new BServiceImpl();
-//    }
+
 
 
 

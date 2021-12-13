@@ -12,14 +12,18 @@ import org.springframework.stereotype.Service;
 /**
  * 在JDK代理的时候,如果impl是final,不会影响动态代理
  */
-@Service
+//@Service
 public class BServiceImpl implements BService {
+
+    public BServiceImpl(){
+        System.out.println("");
+    }
 
     @Autowired
     //@Lazy
     private AService aService;
 
-    //@Async
+//    @Async
     @Override
     public void sayBHello() {
 

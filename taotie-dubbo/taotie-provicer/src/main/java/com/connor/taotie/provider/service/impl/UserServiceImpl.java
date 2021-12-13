@@ -3,10 +3,12 @@ package com.connor.taotie.provider.service.impl;
 import com.connor.taotie.provider.dao.dto.User;
 import com.connor.taotie.provider.dao.mapper.UserMapper;
 import com.connor.taotie.provider.service.UserService;
+import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@DubboService
 public class UserServiceImpl implements UserService {
 
 
