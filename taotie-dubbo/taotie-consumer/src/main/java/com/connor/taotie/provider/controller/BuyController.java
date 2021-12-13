@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BuyController implements ApplicationContextAware {
 
-    @DubboReference
+    @DubboReference(check = false)
     private OrderService orderService;
 
     @Autowired

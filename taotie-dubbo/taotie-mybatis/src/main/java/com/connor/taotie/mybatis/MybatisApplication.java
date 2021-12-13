@@ -7,7 +7,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@MapperScan("com.connor.taotie.mybatis.mappper")
 //才能使用(NoopServiceImpl)AopContext.currentProxy()进行自调用
 @EnableAspectJAutoProxy(exposeProxy = true)
 @EnableAsync

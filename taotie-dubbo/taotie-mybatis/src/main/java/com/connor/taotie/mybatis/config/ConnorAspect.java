@@ -13,6 +13,7 @@ public class ConnorAspect {
 
     //定义切面
     @Pointcut("execution(* com.connor.taotie.mybatis.service..*.*(..))") // expression
+//    @Pointcut("execution(* com.connor.taotie.mybatis.mappper..*.*(..))") // expression
     private void controllerService() {
     }  // signature
 

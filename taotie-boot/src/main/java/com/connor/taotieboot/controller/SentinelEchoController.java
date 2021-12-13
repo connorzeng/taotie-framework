@@ -20,18 +20,11 @@ import java.util.List;
 @RestController
 public class SentinelEchoController {
 
-
-
     @Value("${connor.name}")
     String connorName;
 
-
-
     @Value("${connorNanme.hello}")
     String connorNanmeHello;
-
-
-
 
     @PostConstruct
     public void init() {
