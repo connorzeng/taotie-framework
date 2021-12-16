@@ -2,6 +2,7 @@ package com.connor.jdk.algorithm.dto;
 
 public class NodeOneway {
 
+
     private NodeOneway next;
 
     private String value;
