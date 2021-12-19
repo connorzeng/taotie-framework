@@ -26,5 +26,4 @@ public class ConnorController {
         User user = userService.doSerarch();
         return new RepsponseDTO("hello", "hello", user);
     }
-
 }
