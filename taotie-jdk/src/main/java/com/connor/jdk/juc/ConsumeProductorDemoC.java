@@ -104,9 +104,7 @@ class DataC {
     }
 
     private void signalNext() {
-
         conditionMap.get(nextMap.get(Thread.currentThread().getName())).signal();
-
     }
 
 
